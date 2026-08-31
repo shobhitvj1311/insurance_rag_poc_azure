@@ -1,6 +1,7 @@
 # Credentials and local configuration
 .env
 .env.*
+!.env.example
 
 # Python virtual environment
 .venv/
