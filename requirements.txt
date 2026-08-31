@@ -1,0 +1,5 @@
+openai
+azure-storage-blob
+pypdf
+numpy
+python-dotenv

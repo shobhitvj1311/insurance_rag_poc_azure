@@ -1,0 +1,19 @@
+# Credentials and local configuration
+.env
+.env.*
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+
+# Generated local vector index
+rag_data/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
