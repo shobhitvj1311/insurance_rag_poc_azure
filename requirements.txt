@@ -3,3 +3,4 @@ azure-storage-blob
 pypdf
 numpy
 python-dotenv
+rank-bm25
