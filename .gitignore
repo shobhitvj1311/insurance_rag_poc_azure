@@ -11,8 +11,8 @@ venv/
 __pycache__/
 *.py[cod]
 
-# Generated local vector index
-rag_data/
+# Generated local vector indexes (rag_data/, rag_data_dense/, ...)
+rag_data*/
 
 # Editor and operating-system files
 .vscode/
