@@ -4,3 +4,8 @@ pypdf
 numpy
 python-dotenv
 rank-bm25
+ragas
+pandas
+scikit-learn
+langchain-openai
+datasets
