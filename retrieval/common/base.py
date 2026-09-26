@@ -10,6 +10,30 @@ from openai import OpenAI
 from pypdf import PdfReader
 from rank_bm25 import BM25Okapi
 
+# base.py lives at <repo_root>/retrieval/common/base.py
+REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
+
+from config import (
+    BM25_CORPUS_FILENAME,
+    BM25_WEIGHT,
+    CHUNK_OVERLAP,
+    CHUNK_SIZE,
+    DENSE_OUTPUT_DIRECTORY,
+    DENSE_WEIGHT,
+    DOCUMENTS_DIRECTORY,
+    EMBEDDING_BATCH_SIZE,
+    EMBEDDING_MAX_RETRIES,
+    EMBEDDING_RETRY_BACKOFF_SECONDS,
+    EMBEDDINGS_FILENAME,
+    HYBRID_OUTPUT_DIRECTORY,
+    METADATA_FILENAME,
+    RERANK_CANDIDATE_POOL,
+    RERANK_ENABLED,
+    RERANK_TOP_K,
+    TOP_K,
+)
 
 load_dotenv(override=True)
 
@@ -17,16 +41,6 @@ AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 EMBEDDING_DEPLOYMENT = os.getenv("AZURE_EMBEDDING_DEPLOYMENT")
 CHAT_DEPLOYMENT = os.getenv("AZURE_CHAT_DEPLOYMENT")
-
-DOCUMENTS_DIRECTORY = Path("documents")
-DENSE_OUTPUT_DIRECTORY = Path("rag_data/dense")
-HYBRID_OUTPUT_DIRECTORY = Path("rag_data/hybrid")
-EMBEDDINGS_FILENAME = "embeddings.npy"
-METADATA_FILENAME = "metadata.json"
-TOP_K = 5
-CHUNK_SIZE = 3000
-CHUNK_OVERLAP = 500
-EMBEDDING_BATCH_SIZE = 16
 
 
 def validate_configuration():
@@ -216,9 +230,7 @@ def generate_embeddings(client, records):
         batch_records = records[batch_start:batch_end]
         batch_texts = [record["content"] for record in batch_records]
 
-        maximum_attempts = 3
-
-        for attempt in range(1, maximum_attempts + 1):
+        for attempt in range(1, EMBEDDING_MAX_RETRIES + 1):
             try:
                 response = client.embeddings.create(
                     model=EMBEDDING_DEPLOYMENT,
@@ -241,10 +253,10 @@ def generate_embeddings(client, records):
                 break
 
             except Exception as error:
-                if attempt == maximum_attempts:
+                if attempt == EMBEDDING_MAX_RETRIES:
                     raise
 
-                wait_seconds = attempt * 5
+                wait_seconds = attempt * EMBEDDING_RETRY_BACKOFF_SECONDS
                 print(
                     f"  Embedding attempt {attempt} failed: "
                     f"{type(error).__name__}"
@@ -291,7 +303,7 @@ def save_hybrid_index(embeddings, records, output_directory):
 
     save_dense_index(embeddings, records, output_directory)
 
-    corpus_path = output_directory / "bm25_corpus.json"
+    corpus_path = Path(output_directory) / BM25_CORPUS_FILENAME
     with open(corpus_path, "w", encoding="utf-8") as handle:
         json.dump(
             [record["content"] for record in records],
@@ -371,7 +383,7 @@ def load_hybrid_index(index_directory):
     """Load a hybrid index from disk."""
 
     embeddings, metadata = load_dense_index(index_directory)
-    corpus_path = Path(index_directory) / "bm25_corpus.json"
+    corpus_path = Path(index_directory) / BM25_CORPUS_FILENAME
 
     if not corpus_path.exists():
         raise FileNotFoundError(
@@ -445,15 +457,10 @@ def retrieve_hybrid_chunks(
     corpus_texts,
     question,
     top_k=TOP_K,
+    dense_weight=DENSE_WEIGHT,
+    bm25_weight=BM25_WEIGHT,
 ):
     """Blend dense cosine similarity with BM25 lexical matching."""
-
-    dense_results = retrieve_dense_chunks(
-        question_embedding,
-        document_embeddings,
-        metadata,
-        top_k=max(top_k * 3, top_k),
-    )
 
     dense_scores = document_embeddings @ question_embedding
     dense_min = float(np.min(dense_scores))
@@ -477,7 +484,7 @@ def retrieve_hybrid_chunks(
     else:
         bm25_norm = np.zeros_like(bm25_scores, dtype=np.float32)
 
-    combined = 0.5 * dense_norm + 0.5 * bm25_norm
+    combined = dense_weight * dense_norm + bm25_weight * bm25_norm
     top_indices = np.argsort(combined)[-top_k:][::-1]
 
     results = []
@@ -585,6 +592,7 @@ def process_question(
     question,
     mode="dense",
     corpus_texts=None,
+    use_rerank=RERANK_ENABLED,
 ):
     """Run retrieval and grounded generation for one question."""
 
@@ -597,6 +605,10 @@ def process_question(
 
     print("Retrieving relevant policy passages...")
 
+    # When reranking, over-fetch a wider candidate pool from the retriever;
+    # the reranker then narrows it back down to the final top_k.
+    retrieval_top_k = RERANK_CANDIDATE_POOL if use_rerank else TOP_K
+
     if mode == "hybrid":
         if corpus_texts is None:
             raise ValueError("Corpus text is required for hybrid retrieval.")
@@ -606,12 +618,24 @@ def process_question(
             metadata,
             corpus_texts,
             question,
+            top_k=retrieval_top_k,
         )
     else:
         retrieved_chunks = retrieve_dense_chunks(
             question_embedding,
             embeddings,
             metadata,
+            top_k=retrieval_top_k,
+        )
+
+    if use_rerank:
+        from retrieval.common.reranker import rerank_chunks
+
+        print("Reranking retrieved passages...")
+        retrieved_chunks = rerank_chunks(
+            question,
+            retrieved_chunks,
+            top_k=RERANK_TOP_K,
         )
 
     print_retrieved_chunks(retrieved_chunks)

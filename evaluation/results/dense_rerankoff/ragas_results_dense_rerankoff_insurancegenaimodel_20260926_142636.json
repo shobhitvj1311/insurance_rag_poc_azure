@@ -1,0 +1,2275 @@
+{
+  "metadata": {
+    "evaluation_date": "2026-09-26T14:53:59.161845",
+    "total_questions": 50,
+    "retrieval_mode": "dense",
+    "rerank_enabled": false,
+    "rerank_model": null,
+    "chat_model": "insurance-genai-model",
+    "ragas_judge_model": "insurance-genai-model",
+    "embedding_model": "insurance-embedding-model",
+    "top_k": 5,
+    "index_path": "/home/labuser/Desktop/Persistent_Folder/insurance_rag_poc_azure/rag_data/dense",
+    "framework": "ragas"
+  },
+  "summary": {
+    "avg_context_precision": 0.675,
+    "avg_context_recall": 0.781,
+    "avg_faithfulness": 0.888,
+    "avg_answer_relevancy": 0.556,
+    "avg_source_hit": 0.8,
+    "avg_source_precision": 0.204
+  },
+  "results": [
+    {
+      "question_id": 1,
+      "question": "For policyholder Oliver Bennett under Aviva Distinct Motor policy AVD-2024-YD-001847, on what date did the endorsement adding Sandra Bennett as a named driver take effect, and what are Sandra Bennett's date of birth and relationship to Oliver Bennett?",
+      "reference": "Endorsement effective date: 2024-08-15. Sandra Bennett Date of Birth: 1972-06-20. Relationship to policyholder Oliver Bennett: Mother.",
+      "answer": "The endorsement took effect on 2024-08-15. Sandra Bennett’s date of birth is 1972-06-20 and her relationship to Oliver Bennett is Mother.",
+      "source_document": "P01_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P01_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7829703688621521
+        },
+        {
+          "rank": 2,
+          "document": "P07_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5991379022598267
+        },
+        {
+          "rank": 3,
+          "document": "P01_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.5988848209381104
+        },
+        {
+          "rank": 4,
+          "document": "P01_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.596849799156189
+        },
+        {
+          "rank": 5,
+          "document": "P03_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5954566597938538
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 0.833,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.731
+    },
+    {
+      "question_id": 2,
+      "question": "Under Endorsement Reference END-NDA-001 for policy AVD-2024-YD-001847, what is the registration number of the insured vehicle that Sandra Bennett is authorised to drive, was there any change to the Annual Premium (inc. IPT) as a result of the endorsement (include the Annual Premium figure), and which section of the Policy Schedule is amended?",
+      "reference": "Insured vehicle registration authorised to be driven by Sandra Bennett: OB24 YNG. Annual Premium (inc. IPT) before and after endorsement: £2,068.64 (no change). Premium Adjustment (ex IPT): ±£0.00; IPT on Adjustment (12%): £0.00; Net Premium Adjustment: ±£0.00; Nature of Adjustment: No Premium Change. Section amended: Section 4 (Drivers Covered) of the Policy Schedule.",
+      "answer": "- Registration number authorised: OB24 YNG.\n- Change to Annual Premium (inc. IPT): No change — Annual Premium (inc. IPT) remains £2,068.64.\n- Policy Schedule section amended: Section 4 (Drivers Covered).",
+      "source_document": "P01_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P01_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7452074289321899
+        },
+        {
+          "rank": 2,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6989171504974365
+        },
+        {
+          "rank": 3,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6983831524848938
+        },
+        {
+          "rank": 4,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6932232975959778
+        },
+        {
+          "rank": 5,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6819641590118408
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 0.75,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.605
+    },
+    {
+      "question_id": 3,
+      "question": "Under Policy No AVD-2024-YD-001847, what are the excess amounts and conditions shown in the Excess Schedule (Section 5): (a) Compulsory Excess, (b) Voluntary Excess, (c) Total Standard Excess, (d) Young/Inexperienced Driver Excess, and what notes about waivability and cumulative application are given?",
+      "reference": "(a) Compulsory Excess: £250.00 — \"Applies to all claims; non-waivable\". (b) Voluntary Excess: £250.00 — \"Selected by policyholder; reduces premium\". (c) Total Standard Excess: £500.00 — \"Combined compulsory + voluntary\". (d) Young/Inexperienced Driver Excess: £500.00 — \"Applies when vehicle driven by driver under 25 or with < 2 years licence\". Note: \"Excesses are cumulative where more than one applies to a claim. The compulsory excess is non-negotiable and applies in all claims circumstances.\" (Section 5: Excess Schedule).",
+      "answer": "I cannot answer that from the documents you provided. None of the supplied policy schedules (P90112764, P84501129, P73238648, P68204471, P76893340) show policy number AVD-2024-YD-001847. Please supply the Excess Schedule (Section 5) or the correct policy schedule for AVD-2024-YD-001847 and I will extract the (a) Compulsory Excess, (b) Voluntary Excess, (c) Total Standard Excess, (d) Young/Inexperienced Driver Excess, and any notes about waivability or cumulative application.",
+      "source_document": "P01_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7389750480651855
+        },
+        {
+          "rank": 2,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7361629009246826
+        },
+        {
+          "rank": 3,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7356367111206055
+        },
+        {
+          "rank": 4,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7305647134780884
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.725581169128418
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.143,
+      "faithfulness": 0.4,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 4,
+      "question": "Under Policy No AVD-2024-YD-001847, who are the drivers covered listed in Section 4 (Drivers Covered), and for each driver give the relationship, date of birth, licence held (years), and any notes?",
+      "reference": "Oliver Bennett — Relationship: Policyholder; Date of Birth: 2003-03-14; Licence Held (Years): 1; Notes: Main Driver. Sandra Bennett — Relationship: Mother; Date of Birth: 1972-06-20; Licence Held (Years): 22; Notes: Added by Endorsement. (Section 4: Drivers Covered).",
+      "answer": "I cannot find Policy No AVD-2024-YD-001847 in the documents you provided. The supplied schedules list different policy numbers (e.g., AVD-2024-FD-007153, -HV-013982, -RD-009844, -BU-011267, -MC-015449) but not AVD-2024-YD-001847. Please provide the schedule or page for AVD-2024-YD-001847 and I will extract the Section 4 driver details.",
+      "source_document": "P01_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P03_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6193066835403442
+        },
+        {
+          "rank": 2,
+          "document": "P06_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6172628402709961
+        },
+        {
+          "rank": 3,
+          "document": "P04_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6153194904327393
+        },
+        {
+          "rank": 4,
+          "document": "P05_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.613771915435791
+        },
+        {
+          "rank": 5,
+          "document": "P07_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.613037109375
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.333,
+      "faithfulness": 0.6,
+      "answer_relevancy": 0.736
+    },
+    {
+      "question_id": 5,
+      "question": "For policyholder Catherine Whitmore, what is the endorsement effective date, which policy number does the endorsement amend, and what permitted use is added for vehicle CW19 EXP (including any descriptive wording in the endorsement)?",
+      "reference": "Endorsement effective date: 2024-09-01. Policy number amended: AVD-2024-EP-003291. Permitted use added for vehicle CW19 EXP: Business Use (Class 1) incl. SDP & Commuting; the detailed wording states this “covers use of the vehicle for journeys made in connection with the policyholder's own occupation as Senior Architect.”",
+      "answer": "- Endorsement effective date: 2024-09-01.\n\n- Policy number amended: AVD-2024-EP-003291.\n\n- Permitted use added for vehicle CW19 EXP (per endorsement):\n  - Business Use (Class 1) (summary shows \"Business Use (Class 1) incl. SDP & Commuting\").\n  - Detailed wording: \"With effect from 2024-09-01, the permitted use of vehicle CW19 EXP is extended to include Business Use (Class 1). This covers use of the vehicle for journeys made in connection with the policyholder's own occupation as Senior Architect. Business Use Class 1 does NOT extend to: (i) use as a taxi or hire vehicle; (ii) carrying goods for reward; (iii) use for racing, rallying, pace-making, or speed testing; (iv) commercial travelling involving calling on multiple business premises as the primary purpose of each journey.\" An additional annual premium of £87.50 (ex IPT) applies.",
+      "source_document": "P02_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6207313537597656
+        },
+        {
+          "rank": 2,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.573844313621521
+        },
+        {
+          "rank": 3,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5550316572189331
+        },
+        {
+          "rank": 4,
+          "document": "P03_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5469669103622437
+        },
+        {
+          "rank": 5,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5466972589492798
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.674
+    },
+    {
+      "question_id": 6,
+      "question": "According to the endorsement for Catherine Whitmore (vehicle CW19 EXP), list the things Business Use Class 1 does NOT extend to (items i–iv) and state who is covered for business use under this endorsement.",
+      "reference": "Business Use Class 1 does NOT extend to: (i) use as a taxi or hire vehicle; (ii) carrying goods for reward; (iii) use for racing, rallying, pace-making, or speed testing; (iv) commercial travelling involving calling on multiple business premises as the primary purpose of each journey. Who is covered: Only the policyholder is covered for business use under this endorsement (see Important Notes 3).",
+      "answer": "Business Use Class 1 does NOT extend to:\n- (i) use as a taxi or hire vehicle\n- (ii) carrying goods for reward\n- (iii) use for racing, rallying, pace‑making, or speed testing\n- (iv) commercial travelling involving calling on multiple business premises as the primary purpose of each journey\n\nWho is covered for business use under this endorsement:\n- Use of vehicle CW19 EXP for journeys made in connection with the policyholder’s own occupation as Senior Architect (i.e. Catherine Whitmore).",
+      "source_document": "P02_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6203933358192444
+        },
+        {
+          "rank": 2,
+          "document": "claims_faq.pdf",
+          "page": 31,
+          "score": 0.4879905581474304
+        },
+        {
+          "rank": 3,
+          "document": "motor_policy_wording.pdf",
+          "page": 17,
+          "score": 0.4866120219230652
+        },
+        {
+          "rank": 4,
+          "document": "motor_policy_wording.pdf",
+          "page": 17,
+          "score": 0.4836012125015259
+        },
+        {
+          "rank": 5,
+          "document": "motor_policy_wording.pdf",
+          "page": 45,
+          "score": 0.46247684955596924
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 0.5,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.805
+    },
+    {
+      "question_id": 7,
+      "question": "What is the Agreed/Market Value for the vehicle registration CW19 EXP (Audi A4 2.0 TDI S Line) on policy AVD-2024-EP-003291?",
+      "reference": "£22,000.00",
+      "answer": "The Agreed/Market Value for CW19 EXP (Audi A4 2.0 TDI S Line) on policy AVD-2024-EP-003291 is £22,000.00.",
+      "source_document": "P02_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P02_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.540786862373352
+        },
+        {
+          "rank": 2,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.526054322719574
+        },
+        {
+          "rank": 3,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.5228177905082703
+        },
+        {
+          "rank": 4,
+          "document": "P06_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5171566009521484
+        },
+        {
+          "rank": 5,
+          "document": "P05_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5146517753601074
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.909
+    },
+    {
+      "question_id": 8,
+      "question": "According to the Excess Schedule on policy AVD-2024-EP-003291, list each excess type and amount, state which excess is non-waivable, and state whether excesses are cumulative.",
+      "reference": "Compulsory Excess: £100.00 — Applies to all claims; non-waivable. Voluntary Excess: £200.00 — Selected by policyholder; reduces premium. Total Standard Excess: £300.00 — Combined compulsory + voluntary. Note: Excesses are cumulative where more than one applies to a claim. The compulsory excess is non-negotiable and applies in all claims circumstances.",
+      "answer": "I cannot answer from the provided context. None of the supplied schedules is for policy AVD-2024-EP-003291 (the documents provided are P68204471, P90112764, P84501129, P73238648 and P76893340). The Excess Schedule for AVD-2024-EP-003291 was not included, so I cannot list its excess types/amounts, identify any non‑waivable excess, or state whether excesses are cumulative.\n\nIf you can upload or paste the Excess Schedule for AVD-2024-EP-003291, I will extract those details.",
+      "source_document": "P02_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6327358484268188
+        },
+        {
+          "rank": 2,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6309725642204285
+        },
+        {
+          "rank": 3,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6260637044906616
+        },
+        {
+          "rank": 4,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6245510578155518
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6073005199432373
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.2,
+      "faithfulness": 0.667,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 9,
+      "question": "For Aviva Distinct Motor policy no. AVD-2024-FD-007153 concerning vehicle MC22 FAM: what were the previous and new home addresses and overnight garaging locations recorded by the endorsement, and from what date does this amendment take effect? Also state the endorsement's requirement and the notification timeframe and consequence if the policyholder changes address again.",
+      "reference": "Previous Address and Overnight Garaging Location: 15 Chestnut Close, Leeds, LS4 2HW. New Address and Overnight Garaging Location: 27 Willowbrook Lane, Leeds, LS6 3NR. Effective From: 2024-07-20. Requirement and Notification: \"You must ensure that the vehicle is garaged overnight at the address recorded in this endorsement. If you subsequently change your address again, you must notify Aviva within 14 days. Failure to notify us of a change of address is a material non-disclosure and may affect your ability to make a claim.\"",
+      "answer": "- Policy: AVD-2024-FD-007153 (vehicle MC22 FAM)\n- Effective date of amendment: 2024-07-20.\n\nPrevious home address and overnight garaging location:\n- 15 Chestnut Close, Leeds, LS4 2HW\n\nNew home address and overnight garaging location:\n- 27 Willowbrook Lane, Leeds, LS6 3NR\n\nEndorsement requirement:\n- You must ensure the vehicle is garaged overnight at the address recorded in the endorsement.\n\nNotification timeframe and consequence if address changes again:\n- You must notify Aviva within 14 days of any subsequent change of address. Failure to notify is a material non-disclosure and may affect your ability to make a claim.",
+      "source_document": "P03_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P03_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.8070555925369263
+        },
+        {
+          "rank": 2,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6912364363670349
+        },
+        {
+          "rank": 3,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6901764869689941
+        },
+        {
+          "rank": 4,
+          "document": "P03_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.6873021125793457
+        },
+        {
+          "rank": 5,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6870298385620117
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.75,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.758
+    },
+    {
+      "question_id": 10,
+      "question": "According to the endorsement letter for policy no. AVD-2024-FD-007153 (Endorsement Reference END-COA-001 dated 2024-07-20), what is the premium adjustment (ex IPT), the IPT on the adjustment (including the rate), the net premium adjustment (including IPT), the nature of the adjustment, the collection method, and the timeframe for when the additional premium will be collected?",
+      "reference": "Premium Adjustment (ex IPT): +£23.00. IPT on Adjustment (12%): £2.76. Net Premium Adjustment (including IPT): +£25.76. Nature of Adjustment: Additional Premium. Collection Method: Direct Debit / Card on file. Timeframe for Collection: The additional premium of £25.76 (including IPT) will be collected from your registered payment method within 5–10 working days.",
+      "answer": "- Premium adjustment (ex IPT): +£23.00\n- IPT on adjustment (rate shown): £2.76 (12%)\n- Net premium adjustment (including IPT): +£25.76\n- Nature of adjustment: Additional Premium\n- Collection method: Direct Debit / Card on file\n- Timeframe for collection: Within 5–10 working days from notification",
+      "source_document": "P03_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6458942890167236
+        },
+        {
+          "rank": 2,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6332559585571289
+        },
+        {
+          "rank": 3,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6128994822502136
+        },
+        {
+          "rank": 4,
+          "document": "P03_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6086239814758301
+        },
+        {
+          "rank": 5,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6075564026832581
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.75,
+      "context_recall": 1.0,
+      "faithfulness": 0.0,
+      "answer_relevancy": 0.777
+    },
+    {
+      "question_id": 11,
+      "question": "For policy number AVD-2024-FD-007153, what is the policyholder name, what are the Policy Period start and end dates (both dates inclusive), and what is the Agreed/Market Value of the vehicle with registration MC22 FAM?",
+      "reference": "Policyholder Name: Marcus & Helen Caldwell; Policy Period: 2024-01-15 to 2025-01-14 (both dates inclusive); Agreed/Market Value (vehicle MC22 FAM): £27,500.00.",
+      "answer": "- Policyholder name: Marcus & Helen Caldwell.\n\n- Policy period start and end dates (both inclusive): Not stated in the provided document excerpt for policy AVD-2024-FD-007153 — the policy period dates are unavailable in the supplied context.\n\n- Agreed/Market Value for vehicle reg. MC22 FAM: £27,500.00.",
+      "source_document": "P03_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.6029731035232544
+        },
+        {
+          "rank": 2,
+          "document": "P05_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.6007115840911865
+        },
+        {
+          "rank": 3,
+          "document": "P03_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5975620746612549
+        },
+        {
+          "rank": 4,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.5957008004188538
+        },
+        {
+          "rank": 5,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.5951366424560547
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.333,
+      "context_recall": 0.667,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 12,
+      "question": "Under the Aviva Distinct Motor policy (Policy No: AVD-2024-FD-007153), what are the Compulsory Excess, Voluntary Excess and Total Standard Excess amounts; does the Compulsory Excess apply to all claims and is it waivable; are excesses cumulative; and what excess treatment applies to Windscreen & Glass repair and replacement?",
+      "reference": "Compulsory Excess: £100.00; Voluntary Excess: £150.00; Total Standard Excess: £250.00. The compulsory excess \"Applies to all claims; non-waivable.\" Note: \"Excesses are cumulative where more than one applies to a claim.\" Windscreen & Glass: \"Repair: no excess | Replacement: policy excess.\"",
+      "answer": "I cannot find any document for policy number AVD-2024-FD-007153 in the materials you supplied, so I cannot give the exact Compulsory, Voluntary or Total Standard Excess amounts for that specific policy.\n\nFrom the supplied Aviva motor schedules the following rules and examples are shown (these are general points taken from the documents you provided, not specific to AVD-2024-FD-007153):\n\n- Compulsory vs Voluntary vs Total:\n  - Policies show a Compulsory Excess (varies by driver age/endorsements) and a Voluntary Excess (amount agreed at inception).  \n  - The Total Standard Excess is the sum of the relevant Compulsory and Voluntary Excesses (\"remember you must add the relevant Compulsory and Voluntary Excesses together to calculate the total amount you must pay in the event of any claim made\").\n\n- Do compulsory excesses apply to all claims / are they waivable:\n  - The schedules state an excess is payable \"in the event of any claim, regardless of who is to blame for an incident,\" indicating excesses apply regardless of fault.  \n  - The documents note the Compulsory Excess \"may change\" if you change vehicle or alter No Claims Bonus arrangements, but they do not state that the Compulsory Excess is waivable. The provided context does not show any explicit waiver of the Compulsory Excess.\n\n- Are excesses cumulative:\n  - Yes. The documents explicitly require adding Compulsory and Voluntary excesses to calculate the amount payable. Several schedules also show additional specific excesses (e.g. for alloy wheels, new drivers, fire/theft) which would apply as stated, so additional excesses can also apply where endorsed.\n\n- Windscreen & glass repair/replacement:\n  - When windscreen cover is selected the schedules specify a separate windscreen excess (examples in the supplied documents: \"£115 replacement / £25 repair\").  \n  - Some schedules instead state \"Not covered - Windscreen Cover not selected.\"  \n  - The provided documents do not explicitly state whether the Compulsory and/or Voluntary excesses are still added to the windscreen excess, so that point is not determinable from the supplied context.\n\nIf you can provide the actual schedule or endorsement pages for policy AVD-2024-FD-007153, I can extract the exact Compulsory, Voluntary and Total amounts and confirm the precise treatment for windscreen claims for that policy.",
+      "source_document": "P03_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7577935457229614
+        },
+        {
+          "rank": 2,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7518537044525146
+        },
+        {
+          "rank": 3,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7506369352340698
+        },
+        {
+          "rank": 4,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7491400837898254
+        },
+        {
+          "rank": 5,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7419410943984985
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.25,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 13,
+      "question": "According to the Aviva Distinct Motor endorsement letter (END-MIR-006) dated 2024-09-10 for policy AVD-2024-RD-009844 for policyholder Dorothy Hepworth and vehicle DH16 RTD, what is the amended annual mileage and which Section of the Policy Schedule is amended?",
+      "reference": "The annual mileage declared for vehicle DH16 RTD is reduced to 5,000 miles per annum. Section 8 of the Policy Schedule (Annual Mileage) is amended to 5,000 miles.",
+      "answer": "The amended annual mileage is 5,000 miles per annum, and Section 8 of the Policy Schedule (Annual Mileage) is amended.",
+      "source_document": "P04_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.804651141166687
+        },
+        {
+          "rank": 2,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7511523962020874
+        },
+        {
+          "rank": 3,
+          "document": "P04_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.7262445688247681
+        },
+        {
+          "rank": 4,
+          "document": "P10_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.7014075517654419
+        },
+        {
+          "rank": 5,
+          "document": "P02_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.7004573941230774
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.759
+    },
+    {
+      "question_id": 14,
+      "question": "For Aviva Distinct Motor policy AVD-2024-RD-009844 endorsement END-MIR-006 effective 2024-09-10, state: (a) the previous and new Annual Net Premium amounts; (b) the previous and new Annual Premium (inc. IPT) amounts; (c) the premium refund (ex IPT), the IPT on the adjustment (12%) and the Net Premium Adjustment value; and (d) the collection method and the timeframe for returning the refund.",
+      "reference": "(a) Previous Annual Net Premium: £342.00. New Annual Net Premium: £318.00. (b) Previous Annual Premium (inc. IPT): £383.04. New Annual Premium (inc. IPT): £356.16. (c) Premium refund (ex IPT): £24.00. IPT on Adjustment (12%): £2.88. Net Premium Adjustment: −£26.88. (d) Collection Method: Credit to original payment method. The refund of £26.88 (including IPT) will be returned to your registered payment method within 5–10 working days.",
+      "answer": "(a) Annual Net Premium — Previous: £342.00; New: £318.00.\n\n(b) Annual Premium (inc. IPT) — Previous: £383.04; New: £356.16.\n\n(c) Adjustment details — Premium refund (ex IPT): −£24.00; IPT on adjustment (12%): £2.88; Net Premium Adjustment: −£26.88.\n\n(d) Collection method and timeframe — Credit to original payment method; the refund of £26.88 (including IPT) will be returned to your registered payment method within 5–10 working days.",
+      "source_document": "P04_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.7511881589889526
+        },
+        {
+          "rank": 2,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.7432178258895874
+        },
+        {
+          "rank": 3,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7404215335845947
+        },
+        {
+          "rank": 4,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.7372957468032837
+        },
+        {
+          "rank": 5,
+          "document": "P07_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.7348723411560059
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 0.833,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.681
+    },
+    {
+      "question_id": 15,
+      "question": "For Policy No AVD-2024-RD-009844 (Motor Policy Schedule for Dorothy Hepworth), what are the Compulsory Excess, Voluntary Excess and Total Standard Excess amounts shown in the Excess Schedule (Section 5), and what note is provided about how excesses apply?",
+      "reference": "Compulsory Excess: £100.00; Voluntary Excess: £100.00; Total Standard Excess: £200.00. Note: \"Excesses are cumulative where more than one applies to a claim. The compulsory excess is non-negotiable and applies in all claims circumstances.\" (Section 5: Excess Schedule).",
+      "answer": "I cannot answer from the provided context. None of the supplied policy schedules (P90112764, P84501129, P68204471, P73238648 or P76893340) mention Policy No AVD-2024-RD-009844 or Dorothy Hepworth, so the Compulsory Excess, Voluntary Excess, Total Standard Excess and the applicable note are not available in the documents you supplied.\n\nIf you can provide the Motor Policy Schedule or Excess Schedule (Section 5) for AVD-2024-RD-009844, I will extract the requested amounts and note.",
+      "source_document": "P04_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6866353154182434
+        },
+        {
+          "rank": 2,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6821680068969727
+        },
+        {
+          "rank": 3,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6761316061019897
+        },
+        {
+          "rank": 4,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6753708124160767
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6649764776229858
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.2,
+      "faithfulness": 0.25,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 16,
+      "question": "Under Policy No AVD-2024-RD-009844 for policyholder Dorothy Hepworth, what Foreign Use cover is included (as shown in Cover Selection S8), what is the overall Cover Territory, and what are the Policy Period dates?",
+      "reference": "Foreign Use (S8): Included — \"EU statutory minimum — up to 90 days per trip.\" Cover Territory (Section 11): \"United Kingdom, Channel Islands, Isle of Man, Republic of Ireland, and EU (up to 90 days per trip).\" Policy Period (Section 11): 2024-03-01 to 2025-02-28 (both dates inclusive).",
+      "answer": "- Foreign Use (Cover Selection S8): \"EU statutory minimum — up to 90 days per trip.\" (from Dorothy Hepworth's schedule)\n\n- Cover Territory: Not stated in the excerpt of Policy No AVD-2024-RD-009844 provided here.\n\n- Policy Period dates: Not stated in the excerpt of Policy No AVD-2024-RD-009844 provided here.\n\nIf you can supply the remainder of Dorothy Hepworth's policy schedule (or the Policy References page), I can extract the Cover Territory and Policy Period for that specific policy.",
+      "source_document": "P04_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P04_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5893096923828125
+        },
+        {
+          "rank": 2,
+          "document": "P02_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.560465931892395
+        },
+        {
+          "rank": 3,
+          "document": "P10_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5589929223060608
+        },
+        {
+          "rank": 4,
+          "document": "P09_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.5502017736434937
+        },
+        {
+          "rank": 5,
+          "document": "P01_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5475988984107971
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.25,
+      "context_recall": 0.667,
+      "faithfulness": 0.8,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 17,
+      "question": "For Aviva policy AVD-2024-BU-011267, what was the previous annual mileage, what is the new declared annual mileage for vehicle RS23 BIZ, on what date does the endorsement take effect, and which Section of the Policy Schedule is amended?",
+      "reference": "Previous annual mileage: 25,000 miles. New declared annual mileage for vehicle RS23 BIZ: 30,000 miles per annum. Endorsement effective date: 2024-10-01. Section amended: Section 8 of the Policy Schedule (Annual Mileage) is amended to 30,000 miles.",
+      "answer": "Previous annual mileage: 25,000 miles.\nNew declared annual mileage for RS23 BIZ: 30,000 miles.\nEndorsement effective date: 2024-10-01.\nAmended section of the Policy Schedule: Section 8 (Annual Mileage).",
+      "source_document": "P05_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7674077749252319
+        },
+        {
+          "rank": 2,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7410718202590942
+        },
+        {
+          "rank": 3,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6928883790969849
+        },
+        {
+          "rank": 4,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6854640245437622
+        },
+        {
+          "rank": 5,
+          "document": "P05_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.6775798201560974
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.838
+    },
+    {
+      "question_id": 18,
+      "question": "Under the 'MILEAGE INCREASE' endorsement for policy AVD-2024-BU-011267, what is the premium increase (ex IPT), what is the IPT on the adjustment (including the percentage shown), what is the Net Premium Adjustment (including IPT), what is the Current Annual Premium (inc. IPT) after the change, and how and when will the additional premium be collected?",
+      "reference": "Premium increase (ex IPT): £95.00. IPT on adjustment (12%): £11.40. Net Premium Adjustment (including IPT): +£106.40. Current Annual Premium (inc. IPT): £1,258.88. Collection method: Direct Debit / Card on file. Collection timing: will be collected from your registered payment method within 5–10 working days.",
+      "answer": "- Premium increase (ex IPT): £95.00\n- IPT on the adjustment: £11.40 (12%)\n- Net Premium Adjustment (including IPT): +£106.40\n- Current Annual Premium (inc. IPT) after the change: £1,258.88\n- Collection method and timing: taken from your registered payment method (Direct Debit / Card on file) within 5–10 working days.",
+      "source_document": "P05_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6695041656494141
+        },
+        {
+          "rank": 2,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6041039824485779
+        },
+        {
+          "rank": 3,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.598412275314331
+        },
+        {
+          "rank": 4,
+          "document": "P08_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5853479504585266
+        },
+        {
+          "rank": 5,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.5668699145317078
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 0.833,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.8
+    },
+    {
+      "question_id": 19,
+      "question": "For Policy No AVD-2024-BU-011267 (Aviva Distinct Motor, policyholder Rajesh Sharma), what are the Compulsory Excess amount, the Voluntary Excess amount selected by the policyholder, the Total Standard Excess, and is the Compulsory Excess waivable?",
+      "reference": "Compulsory Excess: £150.00; Voluntary Excess: £200.00; Total Standard Excess: £350.00. The Compulsory Excess is non-waivable and applies to all claims (note: excesses are cumulative where more than one applies).",
+      "answer": "I cannot answer from the provided context. None of the supplied policy schedules (policy numbers P73238648, P90112764, P84501129, P76893340, P68204471) include Policy No AVD-2024-BU-011267 or policyholder Rajesh Sharma. Please provide the specific policy schedule or excess details for AVD-2024-BU-011267 so I can state the compulsory excess, voluntary excess, total standard excess and whether the compulsory excess is waivable.",
+      "source_document": "P05_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7079023122787476
+        },
+        {
+          "rank": 2,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7065613865852356
+        },
+        {
+          "rank": 3,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7023357152938843
+        },
+        {
+          "rank": 4,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7007230520248413
+        },
+        {
+          "rank": 5,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6936742067337036
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 20,
+      "question": "For Policy No AVD-2024-BU-011267, what is the Policy Period (start and end dates, inclusive) and which territories are covered, including the maximum duration per trip for cover in the EU?",
+      "reference": "Policy Period: 2024-05-01 to 2025-04-30 (both dates inclusive). Cover Territory: United Kingdom, Channel Islands, Isle of Man, Republic of Ireland, and EU (up to 90 days per trip).",
+      "answer": "Policy Period: 2024-05-01 to 2025-04-30 (both dates inclusive).\n\nCover Territory: United Kingdom, Channel Islands, Isle of Man, Republic of Ireland, and EU — cover in the EU is limited to up to 90 days per trip.",
+      "source_document": "P05_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P09_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.5728824734687805
+        },
+        {
+          "rank": 2,
+          "document": "P05_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.572373628616333
+        },
+        {
+          "rank": 3,
+          "document": "P02_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.5696717500686646
+        },
+        {
+          "rank": 4,
+          "document": "P10_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.5679397583007812
+        },
+        {
+          "rank": 5,
+          "document": "P08_schedule_2024.pdf",
+          "page": 3,
+          "score": 0.5666541457176208
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.45,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.702
+    },
+    {
+      "question_id": 21,
+      "question": "Under endorsement END-VUP-002 for policy AVD-2024-HV-013982 (Vehicle Upgrade), what is the new insured vehicle's make & model, registration number, year, engine capacity, fuel type and insured value, and on what date does this change take effect?",
+      "reference": "Make & Model: Porsche Cayenne 4.0 V8 Turbo S | Registration: SH73 HVP | Year: 2023 | Engine: 3996cc | Fuel: Petrol | Value: £118,000.00. Effective from 2024-11-01.",
+      "answer": "Under END-VUP-002 (policy AVD-2024-HV-013982), the new insured vehicle is:\n- Make & model: Porsche Cayenne 4.0 V8 Turbo S\n- Registration: SH73 HVP\n- Year: 2023\n- Engine: 3996cc\n- Fuel: Petrol\n- Insured value: £118,000.00\n\nThis change takes effect from 2024-11-01.",
+      "source_document": "P06_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7052002549171448
+        },
+        {
+          "rank": 2,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6398434638977051
+        },
+        {
+          "rank": 3,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6311693787574768
+        },
+        {
+          "rank": 4,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6195223331451416
+        },
+        {
+          "rank": 5,
+          "document": "P03_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.611172080039978
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.88
+    },
+    {
+      "question_id": 22,
+      "question": "According to the 'Impact on Premium' and 'Detailed Endorsement Wording' for policy AVD-2024-HV-013982, what additional premium (ex IPT) applies, what is the IPT rate and IPT amount on the adjustment, what is the net premium adjustment including IPT, how will the additional premium be collected, and within what timeframe will it be collected?",
+      "reference": "Additional premium (ex IPT): £420.00. IPT on Adjustment (12%): £50.40. Net Premium Adjustment (including IPT): +£470.40. Collection Method: Direct Debit / Card on file. Collection timeframe: within 5–10 working days.",
+      "answer": "I cannot answer from the provided context — none of the supplied documents correspond to policy AVD-2024-HV-013982. Please provide the endorsement (or the \"Impact on Premium\" and \"Detailed Endorsement Wording\" pages) for that policy and I will extract the requested figures and collection details.",
+      "source_document": "P06_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6382361650466919
+        },
+        {
+          "rank": 2,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6166897416114807
+        },
+        {
+          "rank": 3,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.611574113368988
+        },
+        {
+          "rank": 4,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6094313859939575
+        },
+        {
+          "rank": 5,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6049355268478394
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.4,
+      "faithfulness": 0.125,
+      "answer_relevancy": 0.539
+    },
+    {
+      "question_id": 23,
+      "question": "For Policy No AVD-2024-HV-013982 (policyholder Sebastian Hartley) what is the Agreed/Market Value and the Annual Mileage for the vehicle with Registration Mark SH73 HVP (Porsche Cayenne 4.0 V8 Turbo S)?",
+      "reference": "Agreed/Market Value: £118,000.00; Annual Mileage: 10,000 miles. (See Section 2: Vehicle Details)",
+      "answer": "Agreed/Market Value: £118,000.00\nAnnual Mileage: 10,000 miles",
+      "source_document": "P06_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P06_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.6406326293945312
+        },
+        {
+          "rank": 2,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6303850412368774
+        },
+        {
+          "rank": 3,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.5432735085487366
+        },
+        {
+          "rank": 4,
+          "document": "P03_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5348952412605286
+        },
+        {
+          "rank": 5,
+          "document": "P10_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5250170230865479
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.569
+    },
+    {
+      "question_id": 24,
+      "question": "According to the Excess Schedule (Section 5) and the No Claims Discount section (Section 8) of Policy No AVD-2024-HV-013982, state the compulsory excess amount, the voluntary excess amount selected by the policyholder, the Total Standard Excess, whether the compulsory excess is waivable, the number of NCD years accumulated, the NCD percentage applied, and whether the NCD is protected.",
+      "reference": "Compulsory Excess: £250.00; Voluntary Excess: £500.00; Total Standard Excess: £750.00. The compulsory excess is non-waivable. NCD Years Accumulated: 10; NCD Percentage Applied: 50%; NCD Protection: Standard (not protected). (See Section 5: Excess Schedule and Section 8: No Claims Discount)",
+      "answer": "I cannot answer this question from the provided context. None of the supplied documents correspond to Policy No AVD-2024-HV-013982 nor do they include an Excess Schedule (Section 5) or No Claims Discount (Section 8) for that policy. Therefore I cannot state the compulsory excess, voluntary excess selected, Total Standard Excess, whether the compulsory excess is waivable, the number of NCD years, the NCD percentage, or whether the NCD is protected.\n\nPlease provide Section 5 and Section 8 (or the policy schedule for AVD-2024-HV-013982) and I will extract those details.",
+      "source_document": "P06_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7174172401428223
+        },
+        {
+          "rank": 2,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7161892652511597
+        },
+        {
+          "rank": 3,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7159327864646912
+        },
+        {
+          "rank": 4,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7092820405960083
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.700732946395874
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.25,
+      "context_recall": 0.0,
+      "faithfulness": 0.846,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 25,
+      "question": "For Aviva Distinct Motor policy no. AVD-2024-MC-015449, on what date did the endorsement removing Daniel Nguyen take effect and which vehicle registration is stated as no longer authorised to be driven by Daniel Nguyen under this policy?",
+      "reference": "The endorsement took effect from 2024-08-01, and the vehicle registration stated as no longer authorised to be driven by Daniel Nguyen is TN21 MCA.",
+      "answer": "The endorsement took effect on 2024-08-01, and Daniel Nguyen is no longer authorised to drive vehicle registration TN21 MCA under this policy.",
+      "source_document": "P07_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P07_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7925696969032288
+        },
+        {
+          "rank": 2,
+          "document": "P68204471_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6257987022399902
+        },
+        {
+          "rank": 3,
+          "document": "P01_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.621035099029541
+        },
+        {
+          "rank": 4,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.6189388036727905
+        },
+        {
+          "rank": 5,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6156113147735596
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.779
+    },
+    {
+      "question_id": 26,
+      "question": "According to the endorsement letter for Thomas & Patricia Nguyen (Policy No. AVD-2024-MC-015449), what is the premium refund (ex IPT) that applies from the effective date, what is the IPT on the adjustment (percentage and amount), what is the net premium adjustment (including IPT), and how and when will the refund be returned?",
+      "reference": "A premium refund of £67.50 (ex IPT) applies from the effective date; the IPT on the adjustment is 12%, amounting to £8.10; the net premium adjustment (including IPT) is −£75.60; the refund of £75.60 (including IPT) will be returned to your registered payment method within 5–10 working days by credit to the original payment method.",
+      "answer": "- Premium refund (ex IPT): £67.50 (from the effective date).\n- IPT on the adjustment: 12%, amount £8.10.\n- Net premium adjustment (including IPT): £75.60 (refund).\n- How/when refunded: the Thomas & Patricia Nguyen endorsement states the refund amount but does not specify the method or timing for returning the refund in the provided excerpt.",
+      "source_document": "P07_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P07_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5314688086509705
+        },
+        {
+          "rank": 2,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.5183082818984985
+        },
+        {
+          "rank": 3,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.5012941956520081
+        },
+        {
+          "rank": 4,
+          "document": "P08_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.48624399304389954
+        },
+        {
+          "rank": 5,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.48605775833129883
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 0.25,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 27,
+      "question": "According to section 7 Premium Summary of Policy No: AVD-2024-MC-015449, what is the Total Premium including Insurance Premium Tax (IPT), what IPT rate is applied, and what is the Payment Frequency?",
+      "reference": "Total Premium (inc. IPT): £832.16. Insurance Premium Tax (IPT) rate applied: 12% (IPT amount shown £89.16). Payment Frequency: Annual (single payment). (See 7. PREMIUM SUMMARY)",
+      "answer": "Total Premium (inc. IPT): £832.16\nIPT rate applied: 12%\nPayment Frequency: Annual (single payment)",
+      "source_document": "P07_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P05_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.5555152297019958
+        },
+        {
+          "rank": 2,
+          "document": "P10_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.5520048141479492
+        },
+        {
+          "rank": 3,
+          "document": "P07_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.5514721870422363
+        },
+        {
+          "rank": 4,
+          "document": "P06_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.547544002532959
+        },
+        {
+          "rank": 5,
+          "document": "P02_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.5460437536239624
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.417,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.848
+    },
+    {
+      "question_id": 28,
+      "question": "For the insured vehicle with Registration Mark TN21 MCA (see 2. VEHICLE DETAILS and 3. COVER SELECTION S6), state the Agreed/Market Value, Engine Capacity, Permitted Use, and what excess applies for windscreen replacement including the excess amounts from the Excess Schedule.",
+      "reference": "Agreed/Market Value: £28,500.00. Engine Capacity: 1498cc. Permitted Use: Social, Domestic, Pleasure & Commuting. Windscreen & Glass cover: Replacement: policy excess. Excess Schedule amounts: Compulsory Excess £100.00 (applies to all claims; non-waivable); Voluntary Excess £150.00 (selected by policyholder); Total Standard Excess (combined compulsory + voluntary) £250.00. Therefore windscreen replacement is subject to the policy excess (Total Standard Excess £250.00). (See 2. VEHICLE DETAILS; 3. COVER SELECTION S6; 5. EXCESS SCHEDULE)",
+      "answer": "I cannot determine the Agreed/Market Value, Engine Capacity or Permitted Use for registration TN21 MCA because the provided documents do not include the 2. VEHICLE DETAILS or a link showing which policy schedule applies to that registration mark.\n\nWindscreen replacement excess — from the supplied excess schedules:\n- Policies P84501129, P68204471 and P73238648: \"£115 replacement / £25 repair\"\n- Policies P90112764 and P76893340: \"Not covered - Windscreen Cover not selected\"\n\nIf you can confirm which policy number (or provide the page showing 2. VEHICLE DETAILS / 3. COVER SELECTION S6 for TN21 MCA), I can state the Agreed/Market Value, Engine Capacity, Permitted Use and confirm the correct windscreen excess.",
+      "source_document": "P07_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6237459182739258
+        },
+        {
+          "rank": 2,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6218523979187012
+        },
+        {
+          "rank": 3,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6214083433151245
+        },
+        {
+          "rank": 4,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6188560724258423
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6103153824806213
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 29,
+      "question": "For policyholder Amara Okafor under Aviva Distinct Motor policy AVD-2024-NI-017033, what change was made to the voluntary excess, what is the new total excess, and on what date does this endorsement take effect?",
+      "reference": "The voluntary excess was amended from £300 to £500; the new total excess is £650; the endorsement takes effect on 2024-09-15.",
+      "answer": "Per the endorsement letter (policy AVD-2024-NI-017033): the voluntary excess was increased from £300 to £500, the new total excess is £650, and the endorsement takes effect on 15 September 2024.",
+      "source_document": "P08_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P08_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.792559027671814
+        },
+        {
+          "rank": 2,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6998507976531982
+        },
+        {
+          "rank": 3,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6987316012382507
+        },
+        {
+          "rank": 4,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6931196451187134
+        },
+        {
+          "rank": 5,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6900928020477295
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.834
+    },
+    {
+      "question_id": 30,
+      "question": "According to the endorsement for Amara Okafor's policy AVD-2024-NI-017033, what were the previous and new Annual Net Premiums, what premium refund (ex IPT) applies from the effective date, what is the IPT on the adjustment and the Net Premium Adjustment, and how and when will the refund be returned?",
+      "reference": "Previous Annual Net Premium £1,039.00; New Annual Net Premium £984.00. A premium refund of £55.00 (ex IPT) applies from the effective date. IPT on the adjustment (12%) is £6.60. Net Premium Adjustment is −£61.60. The refund of £61.60 (including IPT) will be returned to the registered payment method (credit to original payment method) within 5–10 working days.",
+      "answer": "- Previous Annual Net Premium: £1,039.00\n- New Annual Net Premium: £984.00\n- Premium refund (ex IPT) applying from the effective date (2024-09-15): £55.00\n- IPT on the adjustment (12%): £6.60\n- Net Premium Adjustment (including IPT): −£61.60\n- Refund method and timing: credited to your original/registered payment method within 5–10 working days.",
+      "source_document": "P08_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P08_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5865644216537476
+        },
+        {
+          "rank": 2,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.5754214525222778
+        },
+        {
+          "rank": 3,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.5650395154953003
+        },
+        {
+          "rank": 4,
+          "document": "P08_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.5544596314430237
+        },
+        {
+          "rank": 5,
+          "document": "P07_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.5492346286773682
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 0.75,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.755
+    },
+    {
+      "question_id": 31,
+      "question": "Under Policy No AVD-2024-NI-017033, what is the Total Standard Excess that applies to claims, and how is it composed including the amounts of the compulsory and voluntary excesses and which excess is non-waivable?",
+      "reference": "Total Standard Excess: £650.00. Composed of Compulsory Excess £150.00 (applies to all claims; non-waivable) plus Voluntary Excess £500.00 (selected by policyholder). (See Section 5. EXCESS SCHEDULE: \"Compulsory Excess £150.00...non-waivable\", \"Voluntary Excess £500.00\", \"Total Standard Excess £650.00\"; note: \"Excesses are cumulative where more than one applies to a claim.\")",
+      "answer": "I cannot answer from the provided context. None of the supplied policy schedules (P73238648, P68204471, P90112764, P84501129, P76893340) show policy number AVD-2024-NI-017033, so the Total Standard Excess, its compulsory and voluntary components, and any non‑waivable excess for that policy are not available in the documents you gave.\n\nPlease provide the policy schedule or excess details for AVD-2024-NI-017033 and I will extract the requested information.",
+      "source_document": "P08_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6634132266044617
+        },
+        {
+          "rank": 2,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6621323823928833
+        },
+        {
+          "rank": 3,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6586290597915649
+        },
+        {
+          "rank": 4,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6576757431030273
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.65276700258255
+        }
+      ],
+      "source_hit": 0.0,
+      "source_precision": 0.0,
+      "context_precision": 0.0,
+      "context_recall": 0.0,
+      "faithfulness": 0.667,
+      "answer_relevancy": 0.0
+    },
+    {
+      "question_id": 32,
+      "question": "For policyholder Amara Okafor and vehicle registration AO22 NIM on Policy No AVD-2024-NI-017033: (a) what is the vehicle Agreed/Market Value and the sums insured under Section S2 (Fire & Theft) and Section S3 (Accidental Damage); (b) what are the limits under Section S4 (Personal Accident) and Section S5 (Medical Expenses); and (c) what Cover Territory and maximum days per trip are provided under Section S8 (Foreign Use)?",
+      "reference": "(a) Agreed/Market Value: £11,500.00. Section S2 Fire & Theft sum insured: £11,500.00. Section S3 Accidental Damage sum insured: £11,500.00. (b) Section S4 Personal Accident: £5,000 per person (standard). Section S5 Medical Expenses: £500 per person. (c) Cover Territory: United Kingdom, Channel Islands, Isle of Man, Republic of Ireland, and EU (up to 90 days per trip). (See Sections 2 VEHICLE DETAILS and 3 COVER SELECTION S2, S3, S4, S5, S8; and Section 11 POLICY REFERENCES & WORDING Cover Territory.)",
+      "answer": "(a) Agreed/Market Value: £11,500.00\n    S2 (Fire & Theft): £11,500.00\n    S3 (Accidental Damage): £11,500.00\n\n(b) S4 (Personal Accident): £5,000 per person (standard)\n    S5 (Medical Expenses): £500 per person\n\n(c) S8 (Foreign Use): EU statutory minimum — up to 90 days per trip",
+      "source_document": "P08_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P08_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.6904622316360474
+        },
+        {
+          "rank": 2,
+          "document": "P07_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.6484266519546509
+        },
+        {
+          "rank": 3,
+          "document": "P03_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.642318069934845
+        },
+        {
+          "rank": 4,
+          "document": "P04_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.6422839760780334
+        },
+        {
+          "rank": 5,
+          "document": "P01_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.6415303945541382
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 0.714,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.67
+    },
+    {
+      "question_id": 33,
+      "question": "What additional annual premium (ex IPT) does the Aviva Distinct Motor endorsement (Policy No: AVD-2024-EV-019217) add from the effective date 2024-10-15, and what are the IPT on the adjustment and the Net Premium Adjustment (including IPT) shown on Page 2?",
+      "reference": "Additional annual premium (ex IPT): £145.00. IPT on Adjustment (12%): £17.40. Net Premium Adjustment (including IPT): +£162.40.",
+      "answer": "From the document (Page 2 for Policy No: AVD-2024-EV-019217):\n\n- Additional annual premium (ex IPT): +£145.00  \n- IPT on the adjustment (12%): £17.40  \n- Net Premium Adjustment (including IPT): +£162.40",
+      "source_document": "P09_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.7261969447135925
+        },
+        {
+          "rank": 2,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.7072227597236633
+        },
+        {
+          "rank": 3,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7064392566680908
+        },
+        {
+          "rank": 4,
+          "document": "P04_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.706157922744751
+        },
+        {
+          "rank": 5,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.7052412629127502
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.5,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.834
+    },
+    {
+      "question_id": 34,
+      "question": "For Freya Lindqvist's vehicle FL23 EVX, which additional policy sections are now operative under the Comprehensive (EV Enhanced) cover per the endorsement dated 2024-10-15, which EV-specific benefits are included under EV Enhanced cover, which Policy Schedule section is amended, and what is the effective date?",
+      "reference": "Additional operative sections: Section 3 (Accidental Damage), Section 5 (Medical Expenses), Section 6 (Windscreen & Glass), Section 7 (Courtesy Car), Section 10 (In-car Equipment). EV-specific benefits included: battery failure (subject to fair wear and tear exclusion), charging cable theft, and emergency roadside charging assistance. Amended Policy Schedule section: Section 3 (Cover Selection). Effective date: 2024-10-15.",
+      "answer": "- Additional sections now operative: Section 3 (Accidental Damage), Section 5 (Medical Expenses), Section 6 (Windscreen & Glass), Section 7 (Courtesy Car), Section 10 (In‑car Equipment).\n\n- EV‑specific benefits included under EV Enhanced: battery failure (subject to fair wear and tear exclusion), charging cable theft, and emergency roadside charging assistance.\n\n- Policy Schedule section amended: Section 3 (Cover Selection).\n\n- Effective date: 2024-10-15.",
+      "source_document": "P09_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7269580364227295
+        },
+        {
+          "rank": 2,
+          "document": "P09_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.6530373692512512
+        },
+        {
+          "rank": 3,
+          "document": "P09_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6143956184387207
+        },
+        {
+          "rank": 4,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5937074422836304
+        },
+        {
+          "rank": 5,
+          "document": "P02_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.573998212814331
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.797
+    },
+    {
+      "question_id": 35,
+      "question": "For policy AVD-2024-EV-019217 (Policyholder: Freya Lindqvist; Vehicle registration: FL23 EVX), what is the Total Standard Excess, what is the EV Battery/Charging Equipment Excess amount, and is the Compulsory Excess waivable?",
+      "reference": "Total Standard Excess: £450. EV Battery/Charging Equipment Excess: £250. Compulsory Excess: £150 — applies to all claims and is non-waivable (non-negotiable). Note: excesses are cumulative where more than one applies to a claim.",
+      "answer": "- Total Standard Excess: £450.00\n- EV Battery/Charging Equipment Excess: £250\n- Is the Compulsory Excess waivable? No — the compulsory excess is non-waivable / non‑negotiable and applies to all claims.",
+      "source_document": "P09_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P09_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6592967510223389
+        },
+        {
+          "rank": 2,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6547858715057373
+        },
+        {
+          "rank": 3,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.652971625328064
+        },
+        {
+          "rank": 4,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6510920524597168
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6468644142150879
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.752
+    },
+    {
+      "question_id": 36,
+      "question": "According to the Aviva Distinct Motor endorsement letter for Geoffrey Thornton (Policy No: AVD-2024-LM-021800), (a) what is the effective date of the Motor Legal Protection endorsement; (b) what is the total annual premium including IPT after the endorsement; (c) how much additional premium (including IPT) will be collected from the registered payment method and within what timeframe; and (d) what is the claims reporting deadline to DAS?",
+      "reference": "(a) Effective date: 2024-10-20. (b) Total annual premium (including IPT) after endorsement: £306.88. (c) Additional premium to be collected (including IPT): £31.36; collection timeframe: within 5–10 working days from your registered payment method. (d) Claims reporting deadline to DAS: within 180 days of the incident.",
+      "answer": "(a) 2024-10-20.\n\n(b) £306.88 (annual premium including IPT).\n\n(c) £31.36 (including IPT), to be collected within 5–10 working days.\n\n(d) Claims must be reported to DAS within 180 days of the incident.",
+      "source_document": "P10_endorsement_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P10_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.7428715229034424
+        },
+        {
+          "rank": 2,
+          "document": "P10_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6905505061149597
+        },
+        {
+          "rank": 3,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6837517619132996
+        },
+        {
+          "rank": 4,
+          "document": "P09_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6820318102836609
+        },
+        {
+          "rank": 5,
+          "document": "P02_endorsement_2024.pdf",
+          "page": 2,
+          "score": 0.6807839870452881
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.606
+    },
+    {
+      "question_id": 37,
+      "question": "For Geoffrey Thornton's Aviva Distinct Motor Policy (Policy No: AVD-2024-LM-021800), state (a) the Base Net Premium, (b) the Insurance Premium Tax (IPT) amount and rate, (c) the Total Premium including IPT, and (d) the Payment Frequency. Answer: (a) Base Net Premium: £274.00; (b) Insurance Premium Tax (IPT): £32.88 (IPT @ 12%); (c) Total Premium (inc. IPT): £306.88; (d) Payment Frequency: Annual (single payment).",
+      "reference": "Section 7: PREMIUM SUMMARY (Policy No: AVD-2024-LM-021800), Policyholder: Geoffrey Thornton",
+      "answer": "(a) Base Net Premium: £274.00\n(b) Insurance Premium Tax (IPT): £32.88 (IPT @ 12%)\n(c) Total Premium (inc. IPT): £306.88\n(d) Payment Frequency: Annual (single payment)",
+      "source_document": "P10_schedule_2024.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P10_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.7127336263656616
+        },
+        {
+          "rank": 2,
+          "document": "P06_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.7001954317092896
+        },
+        {
+          "rank": 3,
+          "document": "P02_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6992579698562622
+        },
+        {
+          "rank": 4,
+          "document": "P05_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6949437260627747
+        },
+        {
+          "rank": 5,
+          "document": "P03_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6941779255867004
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.671
+    },
+    {
+      "question_id": 38,
+      "question": "For motor policy P68204471 (Vehicle No. NK21 HDF) list each endorsement code confirmed as applicable, and for each give the exact description and the Effective From date.",
+      "reference": "EX06: Towing of caravan or trailer covered up to a maximum combined weight of 3,500kg. Effective From 29/08/2023; EX10: No claims bonus protected - up to 2 fault claims permitted in any 3-year period without loss of bonus. Effective From 29/08/2023.",
+      "answer": "- EX06 — \"Towing of caravan or trailer covered up to a maximum combined weight of 3,500kg.\" — Effective From: 29/08/2023\n- EX10 — \"No claims bonus protected - up to 2 fault claims permitted in any 3-year period without loss of bonus.\" — Effective From: 29/08/2023",
+      "source_document": "P68204471_endorsement_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P68204471_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.5987124443054199
+        },
+        {
+          "rank": 2,
+          "document": "P84501129_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.5922656059265137
+        },
+        {
+          "rank": 3,
+          "document": "P90112764_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.5918129086494446
+        },
+        {
+          "rank": 4,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.590493381023407
+        },
+        {
+          "rank": 5,
+          "document": "P73238648_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.580457329750061
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.497
+    },
+    {
+      "question_id": 39,
+      "question": "For policy number P68204471 (policy holder Declan Michael O'Sullivan), provide the following from the Motor Policy Schedule: (a) vehicle registration and model; (b) period of cover start and end (dates and times); (c) Total premium; (d) the Compulsory excess, Voluntary excess and Total excess for 'Over 25 with full UK licence for at least 1 year'; (e) windscreen excess amounts for replacement and repair; (f) the exact Extra Conditions listed for EX06 and EX10.",
+      "reference": "(a) Registration: NK21 HDF; Model: OCTAVIA ESTATE.\n(b) Period of cover: From: 00:00 on 29/08/2023 To: 00:00 on 29/08/2025.\n(c) Total: £1,015.00.\n(d) Over 25 with full UK licence for at least 1 year - Compulsory: £125 + Voluntary: £350 = Total: £475.\n(e) Windscreen excess: £115 replacement / £25 repair.\n(f) EX06: Towing of caravan or trailer covered up to a maximum combined weight of 3,500kg. EX10: No claims bonus protected - up to 2 fault claims permitted in any 3-year period without loss of bonus.",
+      "answer": "(a) Vehicle registration and model:\n- Registration number: NK21 HDF\n- Model: OCTAVIA ESTATE\n\n(b) Period of cover (dates and times):\n- From: 00:00 on 29/08/2023\n- To: 00:00 on 29/08/2025\n\n(c) Total premium:\n- £1,015.00\n\n(d) Excesses for \"Over 25 with full UK licence for at least 1 year\":\n- Compulsory excess: £125\n- Voluntary excess: £350\n- Total excess: £475\n\n(e) Windscreen excess amounts:\n- Replacement: £115\n- Repair: £25\n\n(f) Extra Conditions (exact wording):\n- EX06\n  Towing of caravan or trailer covered up to a maximum combined weight of 3,500kg.\n- EX10\n  No claims bonus protected - up to 2 fault claims permitted in any 3-year period without loss of bonus.",
+      "source_document": "P68204471_schedule_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.7431263327598572
+        },
+        {
+          "rank": 2,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7322869300842285
+        },
+        {
+          "rank": 3,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7318668365478516
+        },
+        {
+          "rank": 4,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.725782573223114
+        },
+        {
+          "rank": 5,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7238978147506714
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 0.833,
+      "context_recall": 1.0,
+      "faithfulness": 0.667,
+      "answer_relevancy": 0.622
+    },
+    {
+      "question_id": 40,
+      "question": "For Motor Policy No. P73238648 covering Vehicle No. WD08 GZZ, what is the endorsement code, the exact description of the special term confirmed, and the effective date as listed under 'Endorsements / Special Terms Confirmed Applicable to This Policy'?",
+      "reference": "Code: EX01; Description: \"Excludes cover to drive other cars.\"; Effective From: 17/02/2023",
+      "answer": "- Endorsement code: EX01\n- Description: Excludes cover to drive other cars.\n- Effective from: 17/02/2023",
+      "source_document": "P73238648_endorsement_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P73238648_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.594301700592041
+        },
+        {
+          "rank": 2,
+          "document": "P90112764_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.5892112255096436
+        },
+        {
+          "rank": 3,
+          "document": "P84501129_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.5781104564666748
+        },
+        {
+          "rank": 4,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5734651684761047
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.57292640209198
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.61
+    },
+    {
+      "question_id": 41,
+      "question": "For Aviva policy number P73238648 issued to Muntazir Mehdi for vehicle registration WD08 GZZ: (a) What is the period of cover (from date/time and to date/time)? (b) What are the Insurance Premium, Insurance Premium Tax, Credit Charge and Total premium amounts? (c) What are the Compulsory, Voluntary and Total excess amounts for (i) a driver less than 21 years and (ii) a driver over 25 with a full UK licence for at least 1 year? (d) Which Extra Condition (endorsement) applies and what does it state?",
+      "reference": "(a) Period of cover: From 00:00 on 17/02/2023 to 00:00 on 17/02/2025. (b) Insurance Premium: £1,214.83; Insurance Premium Tax: £145.78; Credit Charge: £120.32; Total: £1,480.93. (c)(i) Age less than 21 years — Compulsory £350 + Voluntary £500 = Total £850. (c)(ii) Over 25 with full UK licence for at least 1 year — Compulsory £100 + Voluntary £500 = Total £600. (d) Extra Condition: EX01 — \"Excludes cover to drive other cars.\"",
+      "answer": "(a) Period of cover\n- From: 00:00 on 17/02/2023\n- To: 00:00 on 17/02/2025\n\n(b) Premium amounts\n- Insurance Premium: £1,214.83\n- Insurance Premium Tax: £145.78\n- Credit Charge: £120.32\n- Total: £1,480.93\n\n(c) Excesses (Compulsory / Voluntary / Total)\n- Driver less than 21 years: £350 + £500 = £850\n- Driver over 25 with full UK licence for at least 1 year: £100 + £500 = £600\n\n(d) Extra Condition (Endorsement)\n- EX01: Excludes cover to drive other cars.",
+      "source_document": "P73238648_schedule_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.7661523222923279
+        },
+        {
+          "rank": 2,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.7182868719100952
+        },
+        {
+          "rank": 3,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7124913334846497
+        },
+        {
+          "rank": 4,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7106758952140808
+        },
+        {
+          "rank": 5,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.7032912373542786
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 0.25,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.637
+    },
+    {
+      "question_id": 42,
+      "question": "List the endorsements/special terms confirmed for policyholder Fatima Zahra Rashid (Policy No. P76893340, Vehicle No. FY15 UWT), giving each endorsement code, its exact description and its 'Effective From' date; also state the additional excess amount and duration that applies to a new driver.",
+      "reference": "EX03 — Description: This policy provides Third Party, Fire and Theft cover only - no cover for accidental damage to your own vehicle. Effective From: 12/01/2023. EX05 — Description: New driver - additional excess of £450 applies regardless of fault for the first 12 months. Effective From: 12/01/2023. Additional excess for a new driver: £450 applies regardless of fault for the first 12 months (as stated in EX05).",
+      "answer": "Endorsements / Special Terms confirmed for Fatima Zahra Rashid (Policy P76893340, Vehicle FY15 UWT)\n\n- EX03 — \"This policy provides Third Party, Fire and Theft cover only - no cover for accidental damage to your own vehicle.\" Effective From: 12/01/2023\n\n- EX05 — \"New driver - additional excess of £450 applies regardless of fault for the first 12 months.\" Effective From: 12/01/2023\n\nAdditional excess for a new driver: £450, applying for the first 12 months.",
+      "source_document": "P76893340_endorsement_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P76893340_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.7237030267715454
+        },
+        {
+          "rank": 2,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.6409096717834473
+        },
+        {
+          "rank": 3,
+          "document": "P73238648_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6126794815063477
+        },
+        {
+          "rank": 4,
+          "document": "P84501129_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.5949510931968689
+        },
+        {
+          "rank": 5,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.5711600184440613
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.7,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.855
+    },
+    {
+      "question_id": 43,
+      "question": "For policy number P76893340 held by Fatima Zahra Rashid for vehicle registration FY15 UWT, state (a) the period of cover (from and to, including times and dates), (b) the type of cover, (c) the estimated annual mileage, (d) the policy total premium, and (e) the exact extra conditions (endorsements) that apply including their codes and wording.",
+      "reference": "(a) Period of cover: From: 00:00 on 12/01/2023 To: 00:00 on 12/01/2025. (b) Type of cover: Third Party, Fire and Theft. (c) Annual mileage (est): 4200. (d) Total: £2,050.24. (e) Extra Conditions (Endorsements) that apply: EX03: \"This policy provides Third Party, Fire and Theft cover only - no cover for accidental damage to your own vehicle.\" EX05: \"New driver - additional excess of £450 applies regardless of fault for the first 12 months.\"",
+      "answer": "(a) Period of cover:\n- From: 00:00 on 12/01/2023\n- To: 00:00 on 12/01/2025\n\n(b) Type of cover:\n- Third Party, Fire and Theft\n\n(c) Estimated annual mileage:\n- 4200\n\n(d) Policy total premium:\n- £2,050.24\n\n(e) Extra conditions (endorsements) that apply (codes, exact wording and effective date as shown):\n- EX03 (Effective from 12/01/2023): \"This policy provides Third Party, Fire and Theft cover only - no cover for accidental damage to your own vehicle.\"\n- EX05 (Effective from 12/01/2023): \"New driver - additional excess of £450 applies regardless of fault for the first 12 months.\"",
+      "source_document": "P76893340_schedule_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.675011396408081
+        },
+        {
+          "rank": 2,
+          "document": "P76893340_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6542694568634033
+        },
+        {
+          "rank": 3,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.601786732673645
+        },
+        {
+          "rank": 4,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.5672350525856018
+        },
+        {
+          "rank": 5,
+          "document": "motor_policy_wording.pdf",
+          "page": 48,
+          "score": 0.5627239942550659
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.641
+    },
+    {
+      "question_id": 44,
+      "question": "According to the endorsement schedule for Policy No. P84501129 for vehicle LT19 KPX insured to Priya Anand Kulkarni, list each endorsement code confirmed applicable, its full description as shown, and its Effective From date.",
+      "reference": "EX04: \"Named driver(s) only. No cover for any driver not named on the certificate of motor insurance.\" Effective From 03/04/2023. EX11: \"Excess of £500 applies for any claim where alloy wheel damage is the sole cause of the claim.\" Effective From 03/04/2023.",
+      "answer": "- EX04 — \"Named driver(s) only. No cover for any driver not named on the certificate of motor insurance.\" — Effective From: 03/04/2023\n- EX11 — \"Excess of £500 applies for any claim where alloy wheel damage is the sole cause of the claim.\" — Effective From: 03/04/2023",
+      "source_document": "P84501129_endorsement_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P84501129_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6430000066757202
+        },
+        {
+          "rank": 2,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.6162326335906982
+        },
+        {
+          "rank": 3,
+          "document": "P06_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5752816200256348
+        },
+        {
+          "rank": 4,
+          "document": "P05_endorsement_2024.pdf",
+          "page": 1,
+          "score": 0.5594049692153931
+        },
+        {
+          "rank": 5,
+          "document": "P05_schedule_2024.pdf",
+          "page": 1,
+          "score": 0.5569038391113281
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.399
+    },
+    {
+      "question_id": 45,
+      "question": "For Priya Anand Kulkarni's Aviva Motor Policy P84501129 (vehicle registration LT19 KPX), what is the Total premium payable and what are the individual premium component amounts listed under 'Premium Details' (Payment Method: Annual - Debit Card)?",
+      "reference": "Insurance Premium: £602.10; Policy Upgrade sub-total: £34.99; Insurance Premium Tax: £76.44; Credit Charge: £0.00; Total: £713.53",
+      "answer": "Total premium payable: £713.53\n\nPremium Details (Payment Method: Annual - Debit Card)\n- Insurance Premium: £602.10\n- Policy Upgrade sub-total: £34.99\n- Insurance Premium Tax: £76.44\n- Credit Charge: £0.00\n\n(Policy Upgrades listed: Windscreen Cover, Legal Protection)",
+      "source_document": "P84501129_schedule_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.7293973565101624
+        },
+        {
+          "rank": 2,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.6354604959487915
+        },
+        {
+          "rank": 3,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.6351847648620605
+        },
+        {
+          "rank": 4,
+          "document": "P05_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6334694623947144
+        },
+        {
+          "rank": 5,
+          "document": "P84501129_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6205573081970215
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.577
+    },
+    {
+      "question_id": 46,
+      "question": "According to the Request for Motor Policy Endorsement dated 21/06/2023 for policyholder Gareth Owen Bevan (Policy No. P90112764, Vehicle No. SB70 NXR), list each endorsement code and its description confirmed applicable to the policy and the 'Effective From' date for each; also state the voluntary excess amount and the bank account number, sort code and bank name provided for BACS transfer.",
+      "reference": "Endorsements confirmed for Policy No. P90112764 (Gareth Owen Bevan, Vehicle No. SB70 NXR):\n- EX02: \"Voluntary excess of £750 applies as agreed and confirmed at inception.\" Effective From: 21/06/2023.\n- EX07: \"Excludes cover for any claim occurring while the vehicle is being used for hire or reward.\" Effective From: 21/06/2023.\n- EX09: \"Driving other cars extension not applicable to this policy.\" Effective From: 21/06/2023.\nVoluntary excess amount: £750 (per EX02).\nBACS details provided: Bank Account Number: 22-71-04 / 40667215; Sort Code: 55-71-22; Name of Bank: NatWest Bank plc, Swansea.",
+      "answer": "Endorsements confirmed (Policy P90112764, Vehicle SB70 NXR – dated 21/06/2023)\n- EX02 — Voluntary excess of £750 applies as agreed and confirmed at inception. Effective from: 21/06/2023\n- EX07 — Excludes cover for any claim occurring while the vehicle is being used for hire or reward. Effective from: 21/06/2023\n- EX09 — Driving other cars extension not applicable to this policy. Effective from: 21/06/2023\n\nVoluntary excess amount\n- £750\n\nBACS details provided\n- Bank account number: 22-71-04 / 40667215\n- Sort code: 55-71-22\n- Bank name: NatWest Bank plc, Swansea",
+      "source_document": "P90112764_endorsement_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P90112764_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.7549892067909241
+        },
+        {
+          "rank": 2,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 1,
+          "score": 0.6692979335784912
+        },
+        {
+          "rank": 3,
+          "document": "P68204471_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6400150656700134
+        },
+        {
+          "rank": 4,
+          "document": "P84501129_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6205502152442932
+        },
+        {
+          "rank": 5,
+          "document": "P73238648_endorsement_2023.pdf",
+          "page": 1,
+          "score": 0.6117033362388611
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.76
+    },
+    {
+      "question_id": 47,
+      "question": "For Aviva policy number P90112764 (vehicle registration SB70 NXR), under Comprehensive cover what are the compulsory excess, voluntary excess and total excess for an \"Over 25 with full UK licence for at least 1 year\" driver, and what excess applies for a Fire and/or Theft claim?",
+      "reference": "For \"Over 25 with full UK licence for at least 1 year\": Compulsory £100 + Voluntary £750 = Total £850. For Fire and/or Theft claims: £150.",
+      "answer": "For policy P90112764 (vehicle SB70 NXR) — Comprehensive cover:\n- Compulsory excess (Over 25 with full UK licence for at least 1 year): £100\n- Voluntary excess: £750\n- Total excess: £850\n\nFire and/or Theft excess: £150",
+      "source_document": "P90112764_schedule_2023.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "P76893340_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.8295168876647949
+        },
+        {
+          "rank": 2,
+          "document": "P90112764_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.8265612721443176
+        },
+        {
+          "rank": 3,
+          "document": "P73238648_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.8240727186203003
+        },
+        {
+          "rank": 4,
+          "document": "P84501129_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.810547411441803
+        },
+        {
+          "rank": 5,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.8101819753646851
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.5,
+      "context_recall": 1.0,
+      "faithfulness": 0.5,
+      "answer_relevancy": 0.77
+    },
+    {
+      "question_id": 48,
+      "question": "Under the Aviva Distinct Motor policy, what are the exact conditions that trigger the 'New Car Replacement' benefit (include the vehicle age limit, damage threshold, and what will be provided)?",
+      "reference": "If your car is under 36 months old and stolen or suffers damage exceeding 60% of its list price, we will replace it with a new car of the same make/model. Policy Reference: Section 1 - New car replacement",
+      "answer": "Based on the provided policy documents, New Car Replacement is triggered only when all of these conditions are met:\n\n- Vehicle age: the car is under 36 months old.  \n- Event and damage threshold: the car is stolen or suffers damage exceeding 60% of its list price.  \n- Benefit provided: the insurer will replace it with a new car of the same make, model and specification (if available in Great Britain, Northern Ireland, the Channel Islands and the Isle of Man).\n\nAdditional policy details in the documents:\n- Cars sold as \"ex demonstrator\" or \"nearly new\" do not qualify.  \n- If the qualifying criteria are not met, or the policyholder does not want a like‑for‑like replacement, settlement reverts to market value under Section 6.1.",
+      "source_document": "claims_faq.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "claims_handling_guide.pdf",
+          "page": 3,
+          "score": 0.674034595489502
+        },
+        {
+          "rank": 2,
+          "document": "claims_faq.pdf",
+          "page": 7,
+          "score": 0.6492069959640503
+        },
+        {
+          "rank": 3,
+          "document": "claims_handling_guide.pdf",
+          "page": 5,
+          "score": 0.6361387372016907
+        },
+        {
+          "rank": 4,
+          "document": "P68204471_schedule_2023.pdf",
+          "page": 2,
+          "score": 0.6330315470695496
+        },
+        {
+          "rank": 5,
+          "document": "P05_schedule_2024.pdf",
+          "page": 2,
+          "score": 0.6325271129608154
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.2,
+      "context_precision": 0.5,
+      "context_recall": 1.0,
+      "faithfulness": 0.9,
+      "answer_relevancy": 0.755
+    },
+    {
+      "question_id": 49,
+      "question": "Under SEC 12 (Glass), what excess does the policyholder pay for a windscreen replacement, is there an excess if the glass is repaired rather than replaced, and does a glass claim affect the No Claim Discount?",
+      "reference": "Under SEC 12 (Glass): the policyholder pays the first £100 of a replacement; there is no excess if the glass is repaired rather than replaced; glass claims do not affect the No Claim Discount.",
+      "answer": "- Replacement: the policyholder pays the first £100.\n- Repair (not replacement): no excess applies.\n- No Claim Discount: a claim solely under Section 12 will not affect the No Claim Discount.",
+      "source_document": "claims_handling_guide.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "claims_faq.pdf",
+          "page": 28,
+          "score": 0.641761064529419
+        },
+        {
+          "rank": 2,
+          "document": "claims_handling_guide.pdf",
+          "page": 3,
+          "score": 0.6268774271011353
+        },
+        {
+          "rank": 3,
+          "document": "claims_faq.pdf",
+          "page": 31,
+          "score": 0.6103399395942688
+        },
+        {
+          "rank": 4,
+          "document": "motor_policy_wording.pdf",
+          "page": 21,
+          "score": 0.5884716510772705
+        },
+        {
+          "rank": 5,
+          "document": "claims_handling_guide.pdf",
+          "page": 3,
+          "score": 0.5744640231132507
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.4,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.72
+    },
+    {
+      "question_id": 50,
+      "question": "According to the Distinct Motor policy, what telephone number should you call to make a claim from the UK, what number should you call from overseas, and what does the policy say about the cost of calls to 0800 numbers from UK landlines and mobiles?",
+      "reference": "From the UK: 0800 051 1 750. From overseas: (+44)1603 208 901. The policy states: \"Calls to 0800 numbers from UK landlines and mobiles are free.\"",
+      "answer": "- From the UK: call 0800 051 1750.\n- From overseas: call +44 1603 208 901.\n- The policy states calls to 0800 numbers from UK landlines and mobiles are free.",
+      "source_document": "motor_policy_wording.pdf",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "document": "motor_policy_wording.pdf",
+          "page": 5,
+          "score": 0.7424715757369995
+        },
+        {
+          "rank": 2,
+          "document": "motor_policy_wording.pdf",
+          "page": 3,
+          "score": 0.6625213623046875
+        },
+        {
+          "rank": 3,
+          "document": "claims_faq.pdf",
+          "page": 1,
+          "score": 0.6226398944854736
+        },
+        {
+          "rank": 4,
+          "document": "motor_policy_wording.pdf",
+          "page": 11,
+          "score": 0.5868462324142456
+        },
+        {
+          "rank": 5,
+          "document": "motor_policy_wording.pdf",
+          "page": 26,
+          "score": 0.5835869908332825
+        }
+      ],
+      "source_hit": 1.0,
+      "source_precision": 0.8,
+      "context_precision": 1.0,
+      "context_recall": 1.0,
+      "faithfulness": 1.0,
+      "answer_relevancy": 0.661
+    }
+  ]
+}

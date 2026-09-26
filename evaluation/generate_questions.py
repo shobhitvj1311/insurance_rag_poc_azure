@@ -17,9 +17,18 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from pypdf import PdfReader
 
+# this file lives at <repo_root>/evaluation/generate_questions.py
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
+
+from config import (
+    DOCUMENTS_DIRECTORY,
+    EVAL_MAX_DOC_CHARS,
+    EVAL_TARGET_QUESTIONS,
+    EVAL_TOPUP_ROUNDS,
+    EVALUATION_DIRECTORY,
+)
 
 load_dotenv(override=True)
 
@@ -27,13 +36,11 @@ AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 CHAT_DEPLOYMENT = os.getenv("AZURE_CHAT_DEPLOYMENT")
 
-DOCUMENTS_DIRECTORY = Path("documents")
-EVALUATION_DIRECTORY = Path("evaluation")
 OUTPUT_FILE = EVALUATION_DIRECTORY / "evaluation_questions.json"
 
-TARGET_QUESTIONS = 50
-MAX_DOC_CHARS = 12000      # all pages are read, then capped at this many characters
-MAX_TOPUP_ROUNDS = 3
+TARGET_QUESTIONS = EVAL_TARGET_QUESTIONS
+MAX_DOC_CHARS = EVAL_MAX_DOC_CHARS      # all pages are read, then capped at this many characters
+MAX_TOPUP_ROUNDS = EVAL_TOPUP_ROUNDS
 
 
 def create_openai_client():

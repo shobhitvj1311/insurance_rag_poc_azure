@@ -3,14 +3,20 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+# this file lives at <repo_root>/retrieval/hybrid/ask_hybrid.py
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
+from config import (
+    BM25_CORPUS_FILENAME,
+    EMBEDDINGS_FILENAME,
+    HYBRID_OUTPUT_DIRECTORY,
+    METADATA_FILENAME,
+)
 from retrieval.common.base import (
     CHAT_DEPLOYMENT,
     EMBEDDING_DEPLOYMENT,
-    HYBRID_OUTPUT_DIRECTORY,
     create_openai_client,
     load_hybrid_index,
     process_question,
@@ -35,7 +41,7 @@ def validate_hybrid_setup(index_directory=HYBRID_OUTPUT_DIRECTORY):
         raise ValueError("Missing environment variables: " + ", ".join(missing))
 
     index_path = Path(index_directory)
-    for file_name in ["embeddings.npy", "metadata.json", "bm25_corpus.json"]:
+    for file_name in [EMBEDDINGS_FILENAME, METADATA_FILENAME, BM25_CORPUS_FILENAME]:
         if not (index_path / file_name).exists():
             raise FileNotFoundError(
                 f"File not found: {index_path / file_name}. Run the hybrid index builder first."

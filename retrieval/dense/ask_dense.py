@@ -1,16 +1,16 @@
-import json
 import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
 
+# this file lives at <repo_root>/retrieval/dense/ask_dense.py
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
+from config import DENSE_OUTPUT_DIRECTORY, EMBEDDINGS_FILENAME, METADATA_FILENAME
 from retrieval.common.base import (
     CHAT_DEPLOYMENT,
-    DENSE_OUTPUT_DIRECTORY,
     EMBEDDING_DEPLOYMENT,
     create_openai_client,
     load_dense_index,
@@ -40,15 +40,15 @@ def validate_dense_setup(index_directory=DENSE_OUTPUT_DIRECTORY):
             f"Index directory not found: {index_directory}. Run the dense index builder first."
         )
 
-    if not (Path(index_directory) / "embeddings.npy").exists():
+    if not (Path(index_directory) / EMBEDDINGS_FILENAME).exists():
         raise FileNotFoundError(
-            f"File not found: {Path(index_directory) / 'embeddings.npy'}. "
+            f"File not found: {Path(index_directory) / EMBEDDINGS_FILENAME}. "
             "Run the dense index builder first."
         )
 
-    if not (Path(index_directory) / "metadata.json").exists():
+    if not (Path(index_directory) / METADATA_FILENAME).exists():
         raise FileNotFoundError(
-            f"File not found: {Path(index_directory) / 'metadata.json'}. "
+            f"File not found: {Path(index_directory) / METADATA_FILENAME}. "
             "Run the dense index builder first."
         )
 

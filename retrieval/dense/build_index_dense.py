@@ -1,11 +1,13 @@
 import sys
 from pathlib import Path
 
+# this file lives at <repo_root>/retrieval/dense/build_index_dense.py
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
-from retrieval.common.base import DENSE_OUTPUT_DIRECTORY, build_dense_index
+from config import DENSE_OUTPUT_DIRECTORY
+from retrieval.common.base import build_dense_index
 
 
 if __name__ == "__main__":

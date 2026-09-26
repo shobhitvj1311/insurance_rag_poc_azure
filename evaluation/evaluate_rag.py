@@ -1,8 +1,9 @@
 """
-RAGAS evaluation for the hybrid (BM25 + dense) insurance RAG pipeline.
+RAGAS evaluation for the insurance RAG pipeline.
 
 Reads evaluation/evaluation_questions.json (question, reference, source_document),
-runs your real retrieval + answer generation, then scores with RAGAS:
+runs the real retrieval + answer generation for the chosen configuration, then
+scores with RAGAS:
 
 - context_precision : relevant chunks ranked high in the retrieved list
 - context_recall    : retrieved context covers the reference answer
@@ -11,11 +12,25 @@ runs your real retrieval + answer generation, then scores with RAGAS:
 
 Plus deterministic retrieval checks: source_hit, source_precision.
 
+Results are written to a folder that encodes retrieval mode and rerank state,
+so runs never get mixed up:
+
+    evaluation/results/<mode>_<rerank_on|rerank_off>/ragas_results_<mode>_<rerank>_<chat>_<timestamp>.json
+    evaluation/results/<mode>_<rerank_on|rerank_off>/ragas_report_<mode>_<rerank>_<chat>_<timestamp>.csv
+
+Usage:
+    python evaluation/evaluate_rag.py
+    python evaluation/evaluate_rag.py --mode dense
+    python evaluation/evaluate_rag.py --mode hybrid --no-rerank
+    python evaluation/evaluate_rag.py --mode hybrid --rerank --chat-model gpt-5-mini
+
 pip install ragas langchain-openai datasets pandas numpy python-dotenv
 """
 
+import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -28,13 +43,26 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 if str(REPOSITORY_ROOT) not in sys.path:
     sys.path.insert(0, str(REPOSITORY_ROOT))
 
+from config import (
+    DEFAULT_RETRIEVAL_MODE,
+    DENSE_OUTPUT_DIRECTORY,
+    EVAL_TOP_K,
+    EVALUATION_DIRECTORY,
+    HYBRID_OUTPUT_DIRECTORY,
+    RERANK_CANDIDATE_POOL,
+    RERANK_ENABLED,
+    RERANK_MODEL_NAME,
+    RERANK_TOP_K,
+    RESULTS_DIRECTORY,
+)
 from retrieval.common.base import (
     CHAT_DEPLOYMENT,
     EMBEDDING_DEPLOYMENT,
-    HYBRID_OUTPUT_DIRECTORY,
     create_openai_client,
     get_question_embedding,
+    load_dense_index,
     load_hybrid_index,
+    retrieve_dense_chunks,
     retrieve_hybrid_chunks,
 )
 
@@ -51,14 +79,55 @@ from ragas.metrics import (
 
 load_dotenv(override=True)
 
-TOP_K = 5
 AZURE_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview")
-
-EVALUATION_DIRECTORY = Path("evaluation")
 QUESTIONS_FILE = EVALUATION_DIRECTORY / "evaluation_questions.json"
-TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
-RESULTS_FILE = EVALUATION_DIRECTORY / f"ragas_results_{TIMESTAMP}.json"
-REPORT_FILE = EVALUATION_DIRECTORY / f"ragas_report_{TIMESTAMP}.csv"
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Run a RAGAS evaluation for one pipeline configuration.")
+    parser.add_argument(
+        "--mode",
+        choices=["dense", "hybrid"],
+        default=DEFAULT_RETRIEVAL_MODE,
+        help=f"Retrieval mode to evaluate (default: {DEFAULT_RETRIEVAL_MODE}).",
+    )
+    rerank_group = parser.add_mutually_exclusive_group()
+    rerank_group.add_argument(
+        "--rerank",
+        dest="use_rerank",
+        action="store_true",
+        default=None,
+        help="Enable BGE reranking for this run.",
+    )
+    rerank_group.add_argument(
+        "--no-rerank",
+        dest="use_rerank",
+        action="store_false",
+        default=None,
+        help="Disable reranking for this run.",
+    )
+    parser.add_argument(
+        "--chat-model",
+        default=None,
+        help="Override the chat deployment name for answer generation "
+             "(defaults to AZURE_CHAT_DEPLOYMENT from .env).",
+    )
+    parser.add_argument(
+        "--top-k",
+        type=int,
+        default=None,
+        help=f"Final number of chunks to use (default: {EVAL_TOP_K}, or "
+             f"{RERANK_TOP_K} when reranking).",
+    )
+    args = parser.parse_args()
+    if args.use_rerank is None:
+        args.use_rerank = RERANK_ENABLED
+    return args
+
+
+def sanitize_for_path(value):
+    """Turn a deployment/model name into a filesystem-safe short tag."""
+    return re.sub(r"[^a-zA-Z0-9]+", "", value or "unknown").lower() or "unknown"
 
 
 def load_evaluation_questions(path=QUESTIONS_FILE):
@@ -79,12 +148,26 @@ def _norm_doc(name):
     return Path(str(name)).name.lower().strip()
 
 
-def retrieve_context(client, question, embeddings, metadata, corpus_texts, top_k=TOP_K):
+def retrieve_context(client, question, mode, embeddings, metadata, corpus_texts, top_k, use_rerank):
+    """Retrieve chunks for one question, applying reranking if requested."""
+
     try:
         q_emb = get_question_embedding(client, question, embedding_name=EMBEDDING_DEPLOYMENT)
-        return retrieve_hybrid_chunks(
-            q_emb, embeddings, metadata, corpus_texts, question, top_k=top_k
-        )
+
+        retrieval_top_k = RERANK_CANDIDATE_POOL if use_rerank else top_k
+
+        if mode == "hybrid":
+            chunks = retrieve_hybrid_chunks(
+                q_emb, embeddings, metadata, corpus_texts, question, top_k=retrieval_top_k
+            )
+        else:
+            chunks = retrieve_dense_chunks(q_emb, embeddings, metadata, top_k=retrieval_top_k)
+
+        if use_rerank:
+            from retrieval.common.reranker import rerank_chunks
+            chunks = rerank_chunks(question, chunks, top_k=top_k)
+
+        return chunks
     except Exception as e:
         print(f"  Error retrieving context: {e}")
         return []
@@ -97,7 +180,7 @@ def build_context_string(chunks):
     )
 
 
-def generate_answer(client, question, context):
+def generate_answer(client, question, context, chat_model):
     if not context:
         return "No relevant context found to answer this question."
 
@@ -117,7 +200,7 @@ Rules:
 
     try:
         response = client.chat.completions.create(
-            model=CHAT_DEPLOYMENT,
+            model=chat_model,
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
@@ -149,12 +232,15 @@ class FixedTemperatureAzureChat(AzureChatOpenAI):
         return await super().agenerate_prompt(prompts, stop=stop, callbacks=callbacks, **kwargs)
 
 
-def create_ragas_models():
+def create_ragas_models(judge_chat_model):
+    """RAGAS's own judge models. These score the run and are kept separate
+    from the chat model under test, which is what generate_answer() calls."""
+
     llm = FixedTemperatureAzureChat(
         azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
         api_key=os.environ["AZURE_OPENAI_API_KEY"],
         api_version=AZURE_API_VERSION,
-        azure_deployment=CHAT_DEPLOYMENT,
+        azure_deployment=judge_chat_model,
         temperature=1,  # reasoning-style deployments only accept 1; remove for gpt-4o/4.1
     )
     emb = AzureOpenAIEmbeddings(
@@ -175,22 +261,50 @@ def find_metric_column(df, *prefixes):
 
 
 def evaluate_rag_pipeline():
+    args = parse_args()
+
+    mode = args.mode
+    use_rerank = args.use_rerank
+    chat_model = args.chat_model or CHAT_DEPLOYMENT
+    top_k = args.top_k or (RERANK_TOP_K if use_rerank else EVAL_TOP_K)
+
     print("=" * 70)
     print("RAGAS EVALUATION PIPELINE")
     print("=" * 70)
+    print(f"Retrieval mode : {mode}")
+    print(f"Reranking      : {'enabled (' + RERANK_MODEL_NAME + ')' if use_rerank else 'disabled'}")
+    print(f"Chat model     : {chat_model}")
+    print(f"Embedding model: {EMBEDDING_DEPLOYMENT}")
+    print(f"Top-k          : {top_k}")
+
+    # --- output paths, encoding mode + rerank state so runs never collide ---
+    rerank_tag = "rerankon" if use_rerank else "rerankoff"
+    chat_tag = sanitize_for_path(chat_model)
+    run_directory = RESULTS_DIRECTORY / f"{mode}_{rerank_tag}"
+    run_directory.mkdir(parents=True, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    file_stem = f"{mode}_{rerank_tag}_{chat_tag}_{timestamp}"
+    results_file = run_directory / f"ragas_results_{file_stem}.json"
+    report_file = run_directory / f"ragas_report_{file_stem}.csv"
 
     EVALUATION_DIRECTORY.mkdir(parents=True, exist_ok=True)
 
     questions = load_evaluation_questions()
-    print(f"Loaded {len(questions)} questions with reference answers.")
+    print(f"\nLoaded {len(questions)} questions with reference answers.")
 
-    embeddings, metadata, corpus_texts = load_hybrid_index(HYBRID_OUTPUT_DIRECTORY)
-    print(f"Loaded hybrid index with {len(metadata)} chunks.")
+    if mode == "hybrid":
+        embeddings, metadata, corpus_texts = load_hybrid_index(HYBRID_OUTPUT_DIRECTORY)
+        print(f"Loaded hybrid index with {len(metadata)} chunks.")
+    else:
+        embeddings, metadata = load_dense_index(DENSE_OUTPUT_DIRECTORY)
+        corpus_texts = None
+        print(f"Loaded dense index with {len(metadata)} chunks.")
 
     client = create_openai_client()
 
     samples, extras = [], []
-    print(f"\nRunning retrieval + generation (top_k={TOP_K})...")
+    print(f"\nRunning retrieval + generation...")
     print("-" * 70)
 
     for idx, item in enumerate(questions, 1):
@@ -199,8 +313,10 @@ def evaluate_rag_pipeline():
         source_doc = item.get("source_document", "Unknown")
         print(f"[{idx}/{len(questions)}] {question[:70]}...")
 
-        chunks = retrieve_context(client, question, embeddings, metadata, corpus_texts)
-        answer = generate_answer(client, question, build_context_string(chunks))
+        chunks = retrieve_context(
+            client, question, mode, embeddings, metadata, corpus_texts, top_k, use_rerank
+        )
+        answer = generate_answer(client, question, build_context_string(chunks), chat_model)
 
         retrieved_docs = [_norm_doc(c["document_name"]) for c in chunks]
         expected = _norm_doc(source_doc)
@@ -231,7 +347,10 @@ def evaluate_rag_pipeline():
     print("SCORING WITH RAGAS (many LLM calls, this can take a while)")
     print("=" * 70)
 
-    ragas_llm, ragas_emb = create_ragas_models()
+    # RAGAS's judge model stays on the project's default chat deployment,
+    # regardless of which chat model generated the answers under test, so
+    # scoring methodology is held constant across every comparison run.
+    ragas_llm, ragas_emb = create_ragas_models(CHAT_DEPLOYMENT)
     result = evaluate(
         dataset=EvaluationDataset.from_list(samples),
         metrics=[
@@ -276,17 +395,20 @@ def evaluate_rag_pipeline():
         "metadata": {
             "evaluation_date": datetime.now().isoformat(),
             "total_questions": len(results),
-            "chat_model": CHAT_DEPLOYMENT,
+            "retrieval_mode": mode,
+            "rerank_enabled": use_rerank,
+            "rerank_model": RERANK_MODEL_NAME if use_rerank else None,
+            "chat_model": chat_model,
+            "ragas_judge_model": CHAT_DEPLOYMENT,
             "embedding_model": EMBEDDING_DEPLOYMENT,
-            "retrieval_method": "hybrid",
-            "top_k": TOP_K,
-            "index_path": str(HYBRID_OUTPUT_DIRECTORY),
+            "top_k": top_k,
+            "index_path": str(HYBRID_OUTPUT_DIRECTORY if mode == "hybrid" else DENSE_OUTPUT_DIRECTORY),
             "framework": "ragas",
         },
         "summary": summary,
         "results": results,
     }
-    with open(RESULTS_FILE, "w", encoding="utf-8") as f:
+    with open(results_file, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
     pd.DataFrame([
@@ -302,13 +424,14 @@ def evaluate_rag_pipeline():
             "Answer Relevancy": r["answer_relevancy"],
         }
         for r in results
-    ]).to_csv(REPORT_FILE, index=False, encoding="utf-8")
+    ]).to_csv(report_file, index=False, encoding="utf-8")
 
-    print(f"\n✓ Results saved to: {RESULTS_FILE}")
-    print(f"✓ Report saved to:  {REPORT_FILE}")
+    print(f"\n✓ Results saved to: {results_file}")
+    print(f"✓ Report saved to:  {report_file}")
     print("\n" + "=" * 70)
     print("EVALUATION SUMMARY")
     print("=" * 70)
+    print(f"Mode: {mode} | Rerank: {use_rerank} | Chat model: {chat_model}")
     print(f"Questions evaluated: {len(results)}")
     for m in metric_names:
         v = summary[f"avg_{m}"]

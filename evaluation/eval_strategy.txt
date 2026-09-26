@@ -1,0 +1,34 @@
+I'd actually suggest a different order — don't upgrade the embedding model right away, and don't go full factorial across every combination. Here's why, and what I'd do instead.
+
+Why not "upgrade to large immediately"
+
+Jumping to text-embedding-3-large before measuring anything skips the opportunity to show a real before/after comparison — and for a capstone in front of leadership, "we tested it and it was worth the cost" is a much stronger slide than "we assumed the bigger one was better." It also compounds cost and rebuild time into every subsequent experiment before you know if it's even needed.
+
+Why not full 2×2 across every generative model
+
+If you cross retrieval mode (dense/hybrid) × reranking (on/off) × embedding model × N generative models, that's 2 × 2 × 2 × N full evaluation runs — 8 runs per generative model candidate, each taking ~25-30 minutes against 50 questions. That's expensive in both time and API cost, and most of it is wasted: context precision and context recall don't depend on the generation model at all. Those two RAGAS metrics only compare retrieved chunks against the reference answer — the chat model under test never enters that calculation. So there's no need to re-run the retrieval matrix once per generative model; retrieval quality is decided independently.
+
+What I'd actually suggest: a staged, sequential design
+
+Optimize one variable at a time, carrying the winner forward, rather than a full grid:
+
+Stage 1 — Retrieval matrix (4 runs). Hold embedding model at text-embedding-3-small and generation model at gpt-5-mini (your current baseline). Run the dense/hybrid × rerank-on/off matrix you already planned. Pick the winner primarily on context precision and context recall, since that's what these four runs actually differ on.
+
+Stage 2 — Embedding upgrade (1 run). Take the winning retrieval config from Stage 1, rebuild the index with text-embedding-3-large, rerun once. Compare context precision/recall against the Stage 1 winner. If the gain is clear, adopt it; if it's marginal, you now have a defensible reason to stay on small and save the cost — either outcome is a legitimate finding, not a failure.
+
+Stage 3 — Generation model comparison (1-2 runs). Take the winning retrieval + embedding config, hold it fixed, and swap only the chat deployment: gpt-5-mini baseline vs. one or two newer cost-tier candidates. Compare faithfulness and answer relevancy here, since that's what generation quality actually affects.
+
+Total: roughly 6-7 evaluation runs instead of 16+, and each stage answers one specific question cleanly rather than mixing variables together.
+
+Why this is also the better story for leadership
+
+This gives you a clean narrative arc for the presentation: "We optimized retrieval first, then asked whether a better embedding model was worth its cost, then asked whether a newer generation model improved grounded-answer quality — each decision built on the last, holding everything else constant." That's a much easier thing to defend in Q&A than a large comparison table where three things changed at once and it's unclear which one drove the result.
+
+
+
+python evaluation/evaluate_rag.py                                    # hybrid + config's RERANK_ENABLED
+python evaluation/evaluate_rag.py --mode dense --no-rerank            # stage 1, cell 1
+python evaluation/evaluate_rag.py --mode dense --rerank               # stage 1, cell 2
+python evaluation/evaluate_rag.py --mode hybrid --no-rerank           # stage 1, cell 3
+python evaluation/evaluate_rag.py --mode hybrid --rerank              # stage 1, cell 4
+python evaluation/evaluate_rag.py --mode hybrid --rerank --chat-model gpt-5-4-mini   # stage 3
