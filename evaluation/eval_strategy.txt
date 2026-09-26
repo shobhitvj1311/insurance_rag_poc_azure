@@ -32,3 +32,21 @@ python evaluation/evaluate_rag.py --mode dense --rerank               # stage 1,
 python evaluation/evaluate_rag.py --mode hybrid --no-rerank           # stage 1, cell 3
 python evaluation/evaluate_rag.py --mode hybrid --rerank              # stage 1, cell 4
 python evaluation/evaluate_rag.py --mode hybrid --rerank --chat-model gpt-5-4-mini   # stage 3
+
+Mode: hybrid | Rerank: False | Chat model: insurance-genai-model
+Questions evaluated: 50
+context_precision    0.769
+context_recall       0.893
+faithfulness         0.991
+answer_relevancy     0.625
+source_hit           0.92
+source_precision     0.248
+
+Mode: dense | Rerank: False | Chat model: insurance-genai-model
+Questions evaluated: 50
+context_precision    0.675
+context_recall       0.781
+faithfulness         0.888
+answer_relevancy     0.556
+source_hit           0.8
+source_precision     0.204
