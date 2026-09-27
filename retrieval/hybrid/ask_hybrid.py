@@ -1,3 +1,4 @@
+import argparse
 import sys
 from pathlib import Path
 
@@ -13,6 +14,7 @@ from config import (
     EMBEDDINGS_FILENAME,
     HYBRID_OUTPUT_DIRECTORY,
     METADATA_FILENAME,
+    RERANK_ENABLED,
 )
 from retrieval.common.base import (
     CHAT_DEPLOYMENT,
@@ -24,6 +26,29 @@ from retrieval.common.base import (
 
 
 load_dotenv(override=True)
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Interactive hybrid-retrieval Q&A.")
+    rerank_group = parser.add_mutually_exclusive_group()
+    rerank_group.add_argument(
+        "--rerank",
+        dest="use_rerank",
+        action="store_true",
+        default=None,
+        help="Enable BGE reranking for this session.",
+    )
+    rerank_group.add_argument(
+        "--no-rerank",
+        dest="use_rerank",
+        action="store_false",
+        default=None,
+        help="Disable reranking for this session.",
+    )
+    args = parser.parse_args()
+    if args.use_rerank is None:
+        args.use_rerank = RERANK_ENABLED
+    return args
 
 
 def validate_hybrid_setup(index_directory=HYBRID_OUTPUT_DIRECTORY):
@@ -48,8 +73,11 @@ def validate_hybrid_setup(index_directory=HYBRID_OUTPUT_DIRECTORY):
             )
 
 
-def main(index_directory=HYBRID_OUTPUT_DIRECTORY):
+def main(index_directory=HYBRID_OUTPUT_DIRECTORY, use_rerank=None):
     """Run the hybrid Q&A flow using BM25 + dense retrieval."""
+
+    if use_rerank is None:
+        use_rerank = RERANK_ENABLED
 
     validate_hybrid_setup(index_directory)
     client = create_openai_client()
@@ -62,6 +90,7 @@ def main(index_directory=HYBRID_OUTPUT_DIRECTORY):
     print(f"Vector dimensions: {embeddings.shape[1]}")
     print(f"Embedding deployment: {EMBEDDING_DEPLOYMENT}")
     print(f"Chat deployment: {CHAT_DEPLOYMENT}")
+    print(f"Reranking: {'enabled' if use_rerank else 'disabled'}")
     print()
     print("Type 'exit' to stop.")
 
@@ -84,6 +113,7 @@ def main(index_directory=HYBRID_OUTPUT_DIRECTORY):
                 question,
                 mode="hybrid",
                 corpus_texts=corpus_texts,
+                use_rerank=use_rerank,
             )
         except Exception as error:
             print()
@@ -94,7 +124,8 @@ def main(index_directory=HYBRID_OUTPUT_DIRECTORY):
 
 if __name__ == "__main__":
     try:
-        main()
+        args = parse_args()
+        main(use_rerank=args.use_rerank)
     except KeyboardInterrupt:
         print("\nApplication stopped.")
     except Exception as error:

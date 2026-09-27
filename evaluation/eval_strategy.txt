@@ -50,3 +50,23 @@ faithfulness         0.888
 answer_relevancy     0.556
 source_hit           0.8
 source_precision     0.204
+
+Mode: dense | Rerank: True | Chat model: insurance-genai-model
+Questions evaluated: 50
+context_precision    0.92
+context_recall       0.952
+faithfulness         0.985
+answer_relevancy     0.666
+source_hit           0.98
+source_precision     0.336
+
+======================================================================
+Mode: hybrid | Rerank: True | Chat model: insurance-genai-model
+Questions evaluated: 50
+context_precision    0.895
+context_recall       0.958
+faithfulness         0.995
+answer_relevancy     0.674
+source_hit           0.98
+source_precision     0.324
+

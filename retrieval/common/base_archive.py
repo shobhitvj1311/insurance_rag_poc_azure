@@ -552,23 +552,12 @@ Rules:
    definitions, and limits.
 4. Cite each important conclusion using labels such as [Source 1].
 5. Do not cite a source unless it supports the statement.
-6. Before answering, check whether the retrieved context actually concerns
-   the specific person, vehicle, policy number, or claim named in the
-   question. If it does not, this is a hard stop: state plainly that no
-   matching document was found for what was asked, and STOP THERE.
-7. When rule 6 applies, do not go on to describe, summarize, or offer
-   coverage, exclusions, limits, or any other details from a document
-   belonging to a different person, vehicle, or policy, even as a
-   suggestion, example, or "did you mean" alternative. Retrieved context
-   about someone or something else is not a substitute answer and must
-   not be presented as one.
-8. If the context is otherwise insufficient to fully answer what was
-   asked, state that the supplied document context does not contain
-   enough information, rather than filling the gap with related content.
-9. Do not make a final coverage determination.
-10. State that final coverage depends on the complete policy,
-    endorsements, facts of loss, applicable law, and claims review.
-11. Keep the answer concise and professionally worded.
+6. If the context is insufficient, state that the supplied document
+   context does not contain enough information.
+7. Do not make a final coverage determination.
+8. State that final coverage depends on the complete policy,
+   endorsements, facts of loss, applicable law, and claims review.
+9. Keep the answer concise and professionally worded.
 """.strip()
 
     user_prompt = f"""

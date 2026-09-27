@@ -9,3 +9,5 @@ pandas
 scikit-learn
 langchain-openai
 datasets
+sentence-transformers
+streamlit
