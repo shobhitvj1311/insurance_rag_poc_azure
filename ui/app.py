@@ -120,9 +120,9 @@ def run_config(client, question, question_embedding, config, dense_data, hybrid_
 # ---------------------------------------------------------------------------
 # UI
 # ---------------------------------------------------------------------------
-st.title("RAG Configuration Comparison")
+st.title("Policy and Claims Knowledge Assistant")
 st.caption(
-    f"Chat model: `{CHAT_DEPLOYMENT}` · Embedding model: `{EMBEDDING_DEPLOYMENT}` · "
+    f"Chat model: `GPT-5-mini` · Embedding model: `text-embedding-3-small` · "
     f"Reranker: `{RERANK_MODEL_NAME}` · top_k: {TOP_K} · rerank candidate pool: {RERANK_CANDIDATE_POOL}"
 )
 
